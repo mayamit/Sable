@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionShell from '../components/SectionShell.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import FeatureBlock from '../components/FeatureBlock.astro';
+import LensCard from '../components/LensCard.astro';
+import StepDiagram from '../components/StepDiagram.astro';
+import PricingTable from '../components/PricingTable.astro';
+import TrustPoints from '../components/TrustPoints.astro';
+import Logos from '../components/Logos.astro';
+import CTASection from '../components/CTASection.astro';
+import NavigatorApproval from '../components/NavigatorApproval.astro';
+
+const demoSteps = [
+  { n: '01', title: 'Resolve', body: 'Work out what things mean across your apps.', accent: 'blue' },
+  { n: '02', title: 'Hold', body: 'Keep it in your private Foundation.', accent: 'violet' },
+  { n: '03', title: 'Reuse', body: 'Every lens draws on the same Foundation.', accent: 'teal' },
+];
+const demoTrust = [
+  { title: 'Human-gated writes', body: 'Sable proposes; you approve.', accent: 'green' },
+  { title: 'Source traces', body: 'Every fact shows where it came from.', accent: 'blue' },
+];
+---
+
+<Base title="Components" path="/components" noindex>
+  <SectionShell>
+    <h1 class="text-3xl font-bold">Component sandbox</h1>
+    <p class="mt-2 text-ink-2">Internal reference — every reusable component + variant. Not linked in nav; excluded from sitemap and search.</p>
+
+    <div class="mt-12 space-y-16">
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">Button</h2>
+        <div class="flex flex-wrap items-center gap-3">
+          <Button href="/" variant="primary">Primary</Button>
+          <Button href="/" variant="secondary">Secondary</Button>
+          <Button href="/" variant="ghost">Ghost →</Button>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">Card</h2>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <Card>Default surface card</Card>
+          <Card muted>Muted card</Card>
+          <Card hover>Hover-lift card</Card>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">FeatureBlock</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <FeatureBlock title="Row layout" body="Icon beside the text." accent="teal" />
+          <FeatureBlock title="Stacked layout" body="Icon above the text." accent="amber" layout="stack" />
+        </div>
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">LensCard</h2>
+        <div class="grid gap-6 lg:grid-cols-2">
+          <LensCard name="Communications" tagline="Triage, and drafts in your voice." body="The full communications surface plus a cold-start engine." example="“Draft a reply to Jane about the renewal.”" accent="blue" />
+          <LensCard name="Reasoning" tagline="Answers over your life." body="A generalist that reasons over your actual context." example="“What do I owe Jane, and when is it due?”" accent="violet" />
+        </div>
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">StepDiagram</h2>
+        <StepDiagram steps={demoSteps} />
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">TrustPoints</h2>
+        <TrustPoints points={demoTrust} />
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">Logos</h2>
+        <Logos items={['Email', 'Calendar', 'Contacts', 'Messaging', 'Documents', 'Notes']} />
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">PricingTable</h2>
+        <PricingTable
+          price="$100"
+          cadence="/month"
+          includes={['Both V1 lenses', 'Navigator with human-gated actions', 'Cloud or Home Server']}
+          cta={{ label: 'Get early access', href: '/waitlist' }}
+          note="Packaged like software, priced like infrastructure."
+        />
+      </section>
+
+      <section>
+        <h2 class="mb-5 text-sm font-semibold uppercase tracking-wider text-primary">NavigatorApproval</h2>
+        <div class="max-w-xl"><NavigatorApproval /></div>
+      </section>
+    </div>
+  </SectionShell>
+
+  <section>
+    <h2 class="sr-only">CTASection</h2>
+    <CTASection headline="CTASection component" subhead="The reusable final call-to-action band." cta={{ label: 'Get early access', href: '/waitlist' }} tagline="Your data. Your context. Your decisions." />
+  </section>
+</Base>

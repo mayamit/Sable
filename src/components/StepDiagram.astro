@@ -1,0 +1,38 @@
+---
+import { accent as accentMap, type Accent } from '../lib/accents';
+
+interface Step {
+  n: string;
+  title: string;
+  body: string;
+  accent: string;
+}
+interface Props {
+  steps: Step[];
+}
+const { steps } = Astro.props;
+---
+
+<div class="relative grid gap-6 md:grid-cols-3">
+  <!-- connective line on desktop -->
+  <div
+    class="pointer-events-none absolute left-[16%] right-[16%] top-9 hidden h-px bg-gradient-to-r from-c-blue/40 via-c-violet/40 to-c-teal/40 md:block"
+    aria-hidden="true"
+  >
+  </div>
+
+  {
+    steps.map((step) => {
+      const a = accentMap[step.accent as Accent];
+      return (
+        <div class="relative rounded-[var(--radius-card)] border border-border bg-bg p-6">
+          <div class={`flex h-12 w-12 items-center justify-center rounded-full ${a.softBg} text-lg font-bold ${a.text}`}>
+            {step.n.replace(/^0/, '')}
+          </div>
+          <h3 class="mt-5 text-xl font-semibold text-ink">{step.title}</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-ink-2">{step.body}</p>
+        </div>
+      );
+    })
+  }
+</div>

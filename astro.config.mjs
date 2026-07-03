@@ -11,7 +11,13 @@ export default defineConfig({
   site: 'https://mayamit.github.io',
   base: '/Sable',
   trailingSlash: 'ignore',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      // Keep the internal sandbox out of the public sitemap.
+      filter: (page) => !page.includes('/components'),
+    }),
+  ],
   vite: {
     // Cast avoids a spurious type clash from Astro's nested Vite copy.
     plugins: [/** @type {any} */ (tailwindcss())],

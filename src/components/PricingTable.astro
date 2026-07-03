@@ -1,0 +1,41 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  price: string;
+  cadence: string;
+  subhead?: string;
+  includes: string[];
+  cta: { label: string; href: string };
+  note?: string;
+}
+const { price, cadence, subhead = 'Cloud or Home Server — same price.', includes, cta, note } = Astro.props;
+---
+
+<div class="mx-auto max-w-lg">
+  <div class="overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface shadow-[var(--shadow-lift)]">
+    <div class="px-8 py-8 text-center" style="background:var(--grad)">
+      <div class="flex items-baseline justify-center gap-1 text-white">
+        <span class="text-5xl font-bold tracking-tight">{price}</span>
+        <span class="text-lg font-medium opacity-90">{cadence}</span>
+      </div>
+      <p class="mt-2 text-sm text-white/85">{subhead}</p>
+    </div>
+    <div class="px-8 py-7">
+      <ul class="space-y-3.5">
+        {
+          includes.map((item) => (
+            <li class="flex items-start gap-3 text-[15px] text-ink">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="mt-0.5 shrink-0 text-primary" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+      <Button href={cta.href} variant="primary" class="mt-7 w-full">{cta.label}</Button>
+      {note && <p class="mt-4 text-center text-sm italic text-muted">{note}</p>}
+    </div>
+  </div>
+</div>

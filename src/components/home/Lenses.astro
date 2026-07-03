@@ -1,9 +1,10 @@
 ---
 import SectionShell from '../SectionShell.astro';
 import SectionHeading from '../SectionHeading.astro';
+import LensCard from '../LensCard.astro';
 import Button from '../Button.astro';
 import { lenses } from '../../data/home';
-import { accent, type Accent } from '../../lib/accents';
+import { type Accent } from '../../lib/accents';
 ---
 
 <SectionShell>
@@ -16,27 +17,15 @@ import { accent, type Accent } from '../../lib/accents';
 
   <div class="mt-12 grid gap-6 lg:grid-cols-2">
     {
-      lenses.items.map((lens) => {
-        const a = accent[lens.accent as Accent];
-        return (
-          <article class="group flex flex-col rounded-[var(--radius-card)] border border-border bg-surface p-7 shadow-[var(--shadow-card)] transition-transform duration-200 hover:-translate-y-1">
-            <div class="flex items-center gap-3">
-              <span class={`flex h-11 w-11 items-center justify-center rounded-[10px] ${a.softBg}`}>
-                <span class={`h-3 w-3 rounded-full ${a.bg}`} />
-              </span>
-              <div>
-                <h3 class="text-xl font-semibold text-ink">{lens.name}</h3>
-                <p class={`text-sm font-medium ${a.text}`}>{lens.tagline}</p>
-              </div>
-            </div>
-            <p class="mt-5 text-[15px] leading-relaxed text-ink-2">{lens.body}</p>
-            <div class="mt-6 rounded-[var(--radius-btn)] border border-border bg-bg px-4 py-3">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted">Try asking</p>
-              <p class="mt-1 text-[15px] font-medium text-ink">{lens.example}</p>
-            </div>
-          </article>
-        );
-      })
+      lenses.items.map((lens) => (
+        <LensCard
+          name={lens.name}
+          tagline={lens.tagline}
+          body={lens.body}
+          example={lens.example}
+          accent={lens.accent as Accent}
+        />
+      ))
     }
   </div>
 

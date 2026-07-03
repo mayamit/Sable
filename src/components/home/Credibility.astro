@@ -1,0 +1,28 @@
+---
+import SectionShell from '../SectionShell.astro';
+import { credibility } from '../../data/home';
+import { accent as accentMap, type Accent } from '../../lib/accents';
+---
+
+<SectionShell tight>
+  <div class="mx-auto max-w-3xl text-center">
+    <h2 class="text-2xl font-bold sm:text-3xl">{credibility.headline}</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-ink-2">{credibility.subhead}</p>
+
+    <ul class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      {
+        credibility.principles.map((p) => {
+          const a = accentMap[p.accent as Accent];
+          return (
+            <li class={`inline-flex items-center gap-2 rounded-full border ${a.border} ${a.softBg} px-4 py-2 text-sm font-medium ${a.text}`}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              {p.label}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</SectionShell>

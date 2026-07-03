@@ -1,0 +1,50 @@
+---
+import SectionShell from '../SectionShell.astro';
+import SectionHeading from '../SectionHeading.astro';
+import { foundation } from '../../data/privacy';
+import { accent as accentMap, type Accent } from '../../lib/accents';
+---
+
+<SectionShell class="bg-surface border-y border-border">
+  <SectionHeading eyebrow="Your Foundation" title={foundation.headline} subhead={foundation.subhead} center />
+
+  <div class="mx-auto mt-12 max-w-3xl overflow-hidden rounded-[var(--radius-card)] border border-border bg-bg shadow-[var(--shadow-card)]">
+    <div class="flex items-center justify-between border-b border-border bg-surface px-5 py-3">
+      <span class="text-sm font-semibold text-ink">What Sable knows about you</span>
+      <span class="text-xs text-muted">{foundation.facts.length} facts · all traceable</span>
+    </div>
+
+    <ul class="divide-y divide-border">
+      {
+        foundation.facts.map((fact) => {
+          const a = accentMap[fact.accent as Accent];
+          return (
+            <li class="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div class="min-w-0">
+                <p class="text-[15px] font-medium text-ink">{fact.label}</p>
+                <p class="mt-0.5 text-xs text-muted">{fact.due}</p>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  {fact.sources.map((s) => (
+                    <span class={`inline-flex items-center gap-1.5 rounded-full border ${a.border} ${a.softBg} px-2.5 py-1 text-xs font-medium ${a.text}`}>
+                      <span class={`h-1.5 w-1.5 rounded-full ${a.bg}`} />
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class="flex shrink-0 items-center gap-2">
+                <span class="rounded-[8px] border border-border bg-surface px-3 py-1.5 text-xs font-medium text-ink-2">Edit</span>
+                <span class="rounded-[8px] border border-c-rose/30 bg-c-rose/10 px-3 py-1.5 text-xs font-medium text-c-rose-700">Delete</span>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <div class="flex flex-wrap items-center justify-between gap-3 border-t border-border bg-surface px-5 py-3 text-xs text-muted">
+      <span>Every fact traces back to its source. Nothing is hidden from you.</span>
+      <span class="font-medium text-primary">Export all · Delete all</span>
+    </div>
+  </div>
+</SectionShell>

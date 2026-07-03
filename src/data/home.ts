@@ -137,6 +137,18 @@ export const dataPlace = {
   cta: { label: 'About the Home Server', href: '/home-server' },
 };
 
+export const credibility = {
+  // Honest, pre-launch framing — no fake logos, no fabricated testimonials.
+  headline: 'Built in the open, with early users.',
+  subhead:
+    'Sable is in early access, shaped hand-in-hand with a small group of design partners. Real names and stories will land here as the group grows — we won’t borrow logos we haven’t earned.',
+  principles: [
+    { label: 'Private by design', accent: 'teal' },
+    { label: 'Human-gated actions', accent: 'green' },
+    { label: 'No lock-in — export anytime', accent: 'blue' },
+  ],
+};
+
 export const pricing = {
   headline: 'One price. Everything included.',
   subhead: 'No tiers of features to decode. Choose where Sable runs; the product is the same.',

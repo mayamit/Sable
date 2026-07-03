@@ -1,7 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
+import SectionShell from '../components/SectionShell.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CanSee from '../components/privacy/CanSee.astro';
+import FoundationView from '../components/privacy/FoundationView.astro';
 import Trust from '../components/home/Trust.astro';
+import NavigatorApproval from '../components/NavigatorApproval.astro';
 import DataPlace from '../components/home/DataPlace.astro';
 import FinalCta from '../components/home/FinalCta.astro';
 ---
@@ -16,7 +21,24 @@ import FinalCta from '../components/home/FinalCta.astro';
     title="Your data was protected before a single line was written."
     subhead="Sable is designed so that knowing you never means losing control. Here is exactly what it can see, what it can do, and what stays yours."
   />
+
+  <CanSee />
   <Trust />
+
+  <!-- The approval moment -->
+  <SectionShell class="bg-surface border-y border-border">
+    <SectionHeading
+      eyebrow="The approval moment"
+      title="You are always the last step."
+      subhead="Sable prepares work and shows you exactly what it will do — with the reasoning and a full preview. Nothing is sent or changed until you approve."
+      center
+    />
+    <div class="mx-auto mt-12 max-w-xl">
+      <NavigatorApproval />
+    </div>
+  </SectionShell>
+
+  <FoundationView />
   <DataPlace />
   <FinalCta />
 </Base>

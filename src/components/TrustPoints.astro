@@ -1,0 +1,22 @@
+---
+import FeatureBlock from './FeatureBlock.astro';
+import { type Accent } from '../lib/accents';
+
+interface Point {
+  title: string;
+  body: string;
+  accent: string;
+}
+interface Props {
+  points: Point[];
+  /** Grid columns at sm+. */
+  cols?: 2 | 3;
+  class?: string;
+}
+const { points, cols = 2, class: klass = '' } = Astro.props;
+const grid = cols === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2';
+---
+
+<div class={`grid gap-6 ${grid} ${klass}`}>
+  {points.map((p) => <FeatureBlock title={p.title} body={p.body} accent={p.accent as Accent} />)}
+</div>

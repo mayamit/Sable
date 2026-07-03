@@ -1,0 +1,54 @@
+---
+import SectionShell from '../SectionShell.astro';
+import SectionHeading from '../SectionHeading.astro';
+import Card from '../Card.astro';
+import { canSee } from '../../data/privacy';
+---
+
+<SectionShell>
+  <SectionHeading eyebrow="Plain English" title={canSee.headline} subhead={canSee.subhead} center />
+
+  <div class="mt-12 grid gap-6 lg:grid-cols-2">
+    <Card class="p-7">
+      <h3 class="flex items-center gap-2.5 text-lg font-semibold text-ink">
+        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-c-green/10 text-c-green">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        {canSee.can.title}
+      </h3>
+      <ul class="mt-5 space-y-3">
+        {
+          canSee.can.items.map((item) => (
+            <li class="flex items-start gap-3 text-[15px] text-ink-2">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-c-green" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </Card>
+
+    <Card class="p-7">
+      <h3 class="flex items-center gap-2.5 text-lg font-semibold text-ink">
+        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-c-rose/10 text-c-rose">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+          </svg>
+        </span>
+        {canSee.cannot.title}
+      </h3>
+      <ul class="mt-5 space-y-3">
+        {
+          canSee.cannot.items.map((item) => (
+            <li class="flex items-start gap-3 text-[15px] text-ink-2">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-c-rose" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </Card>
+  </div>
+</SectionShell>

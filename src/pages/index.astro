@@ -7,12 +7,46 @@ import Lenses from '../components/home/Lenses.astro';
 import WorksOverApps from '../components/home/WorksOverApps.astro';
 import Trust from '../components/home/Trust.astro';
 import DataPlace from '../components/home/DataPlace.astro';
+import Credibility from '../components/home/Credibility.astro';
 import Pricing from '../components/home/Pricing.astro';
 import FAQ from '../components/home/FAQ.astro';
 import FinalCta from '../components/home/FinalCta.astro';
+import { site } from '../data/site';
+import { href } from '../lib/url';
+
+const siteUrl = new URL(href('/'), Astro.site).toString();
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'PSL',
+    url: siteUrl,
+    brand: { '@type': 'Brand', name: 'Sable' },
+    description: site.description,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Sable',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Cloud, Home Server',
+    description: site.description,
+    offers: {
+      '@type': 'Offer',
+      price: '100',
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: '100',
+        priceCurrency: 'USD',
+        unitText: 'MONTH',
+      },
+    },
+  },
+];
 ---
 
-<Base path="/">
+<Base path="/" jsonLd={jsonLd}>
   <Hero />
   <Problem />
   <HowItWorks />
@@ -20,6 +54,7 @@ import FinalCta from '../components/home/FinalCta.astro';
   <WorksOverApps />
   <Trust />
   <DataPlace />
+  <Credibility />
   <Pricing />
   <FAQ />
   <FinalCta />

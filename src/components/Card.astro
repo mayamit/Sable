@@ -1,0 +1,20 @@
+---
+// Generic surface card: 1px border, 14px radius, soft shadow (brief §3).
+interface Props {
+  as?: string;
+  /** Lift slightly on hover (for interactive cards). */
+  hover?: boolean;
+  /** Softer bg card for use on white sections. */
+  muted?: boolean;
+  class?: string;
+}
+const { as: Tag = 'div', hover = false, muted = false, class: klass = '' } = Astro.props;
+const bg = muted ? 'bg-bg' : 'bg-surface';
+const lift = hover ? 'transition-transform duration-200 hover:-translate-y-1' : '';
+---
+
+<Tag
+  class={`rounded-[var(--radius-card)] border border-border ${bg} p-6 shadow-[var(--shadow-card)] ${lift} ${klass}`}
+>
+  <slot />
+</Tag>

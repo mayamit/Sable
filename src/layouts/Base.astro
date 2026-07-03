@@ -11,13 +11,21 @@ interface Props {
   description?: string;
   /** Path of the current page for canonical/OG, e.g. "/pricing". */
   path?: string;
+  /** Keep the page out of search + AI indexes (e.g. internal sandbox). */
+  noindex?: boolean;
+  /** Optional JSON-LD structured data object(s). */
+  jsonLd?: object | object[];
 }
 
 const {
   title,
   description = site.description,
   path = '/',
+  noindex = false,
+  jsonLd,
 } = Astro.props;
+
+const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
 const canonical = new URL(href(path), Astro.site).toString();
@@ -35,6 +43,7 @@ const ogImage = new URL(href('/og/default.png'), Astro.site).toString();
 
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -49,6 +58,12 @@ const ogImage = new URL(href('/og/default.png'), Astro.site).toString();
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    {
+      jsonLdBlocks.map((block) => (
+        <script type="application/ld+json" set:html={JSON.stringify(block)} />
+      ))
+    }
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
