@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sable — Communications lens (V1 mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F9; --surface:#FFFFFF; --ink:#1B1F2A; --ink-2:#454B57; --muted:#6B7280;
+    --border:#E7E9EE; --primary:#5B4EF0; --primary-700:#4A3ED6; --primary-50:#ECEAFE;
+    --grad:linear-gradient(135deg,#6A5CF6,#8B7CF8);
+    --green:#10B981; --amber:#F59E0B; --blue:#3B82F6; --rose:#F43F5E;
+    --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  .app{max-width:1200px;margin:0 auto;padding:20px}
+  /* Top bar */
+  .topbar{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
+  .mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:0 4px 12px rgba(107,92,246,.4)}
+  .mark svg{width:16px;height:16px}
+  .lenswitch{display:flex;gap:6px;margin-left:8px}
+  .chip{font-size:13px;font-weight:600;color:var(--ink-2);padding:7px 13px;border-radius:999px;border:1px solid var(--border);background:#fff;cursor:pointer}
+  .chip.active{background:var(--primary-50);color:var(--primary-700);border-color:#d9d4fb}
+  .intent{flex:1;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 14px;color:var(--muted);font-size:14px;min-width:180px}
+  .intent svg{width:15px;height:15px;color:var(--primary)}
+  .who{display:flex;align-items:center;gap:9px}
+  .avatar{width:32px;height:32px;border-radius:50%;background:#dfe3ea;display:grid;place-items:center;font-weight:700;font-size:12px;color:#404654}
+  .who small{display:block;color:var(--muted);font-size:11px}
+  .who b{font-size:13px}
+  /* cold start banner */
+  .cold{margin-top:14px;display:flex;align-items:center;gap:10px;background:linear-gradient(0deg,#faf9ff,#faf9ff);border:1px solid #e9e5fd;border-radius:12px;padding:11px 14px;font-size:13px;color:#4a4570}
+  .cold svg{width:16px;height:16px;color:var(--primary)}
+  .cold .bar{flex:1;height:6px;border-radius:6px;background:#e9e5fd;overflow:hidden;max-width:220px}
+  .cold .bar i{display:block;height:100%;width:100%;background:var(--grad)}
+  /* layout */
+  .grid{display:grid;grid-template-columns:340px 1fr;gap:16px;margin-top:16px}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .panel-h{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .panel-h h2{margin:0;font-size:14px;letter-spacing:-.01em}
+  .panel-h .count{font-size:12px;color:var(--muted)}
+  /* triage */
+  .group{padding:8px 10px 4px}
+  .group-t{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:8px 8px 6px}
+  .dot{width:8px;height:8px;border-radius:50%}
+  .msg{display:flex;gap:10px;padding:10px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+  .msg:hover{background:#fafbfc}
+  .msg.sel{background:var(--primary-50);border-color:#e2ddfb}
+  .msg .av{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;font-size:12px;color:#fff}
+  .msg .body{min-width:0;flex:1}
+  .msg .row1{display:flex;justify-content:space-between;gap:8px}
+  .msg .from{font-weight:600;font-size:13.5px}
+  .msg .time{font-size:11px;color:var(--muted);flex:none}
+  .msg .subj{font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .msg .prev{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tag{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px}
+  .tag.reply{background:#fff2e6;color:#b26a00}
+  .handled{padding:10px 14px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px;border-top:1px dashed var(--border);margin-top:4px}
+  .handled svg{width:14px;height:14px;color:var(--green)}
+  /* thread */
+  .thread{padding:18px 20px}
+  .th-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+  .th-head h1{margin:0;font-size:18px;letter-spacing:-.02em}
+  .th-head .meta{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .pill{font-size:11px;font-weight:700;color:#b26a00;background:#fff2e6;padding:5px 10px;border-radius:999px}
+  .email{border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .email .eh{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .email .eh .av{width:30px;height:30px;border-radius:50%;background:#3B82F6;color:#fff;display:grid;place-items:center;font-weight:700;font-size:11px}
+  .email .eh b{font-size:13.5px}
+  .email .eh small{color:var(--muted);font-size:12px}
+  .email p{margin:6px 0 0;font-size:14px;line-height:1.6;color:var(--ink-2)}
+  /* draft card */
+  .draft{border:1.5px solid #d9d4fb;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(91,78,240,.10)}
+  .draft-h{display:flex;align-items:center;gap:9px;background:var(--primary-50);padding:10px 14px;font-size:12.5px;font-weight:700;color:var(--primary-700)}
+  .draft-h svg{width:15px;height:15px}
+  .draft-b{padding:14px 16px}
+  .draft-b p{margin:0 0 10px;font-size:14px;line-height:1.65;color:var(--ink)}
+  .ctx{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 14px}
+  .ctx .c{font-size:11.5px;color:var(--ink-2);background:#f3f4f7;border:1px solid var(--border);border-radius:999px;padding:4px 10px;display:flex;align-items:center;gap:5px}
+  .ctx .c svg{width:12px;height:12px;color:var(--muted)}
+  .ctx .lbl{font-size:11.5px;color:var(--muted);align-self:center;margin-right:2px}
+  .actions{display:flex;align-items:center;gap:8px}
+  .btn{font-family:inherit;font-weight:600;font-size:13.5px;border-radius:10px;padding:9px 15px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--ink)}
+  .btn.primary{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 12px rgba(91,78,240,.3)}
+  .btn.ghost{border-color:transparent;background:transparent;color:var(--muted)}
+  .note{margin-left:auto;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .note svg{width:13px;height:13px;color:var(--primary)}
+  .footer{margin-top:14px;display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12.5px;padding:2px 4px}
+  .footer svg{width:14px;height:14px;color:var(--green)}
+  .caption{max-width:1200px;margin:10px auto 0;color:#9aa1ad;font-size:12px}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="brand"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="currentColor"/></svg></span> Sable</div>
+    <div class="lenswitch">
+      <span class="chip active">Communications</span>
+      <span class="chip">Reasoning</span>
+    </div>
+    <div class="intent">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 5L19 9.8 14 11.6 12 17l-1.8-5.4L5 9.8 10.2 8 12 3z" fill="currentColor"/></svg>
+      Ask Sable, or tell it what to do…
+    </div>
+    <div class="who">
+      <div style="text-align:right"><b>Glenn</b><small>Communications</small></div>
+      <div class="avatar">GH</div>
+    </div>
+  </div>
+
+  <!-- Cold start -->
+  <div class="cold">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+    Sable has read 14 months of your email and resolved <b>128 people</b> and <b>340 commitments</b> to get here.
+    <span class="bar"><i></i></span> <b style="color:#4a4570">Ready</b>
+  </div>
+
+  <div class="grid">
+    <!-- Triage column -->
+    <div class="panel">
+      <div class="panel-h"><h2>Today</h2><span class="count">32 messages · Gmail</span></div>
+
+      <div class="group">
+        <div class="group-t"><span class="dot" style="background:var(--amber)"></span> Needs your reply · 4</div>
+
+        <div class="msg sel">
+          <div class="av" style="background:#3B82F6">JS</div>
+          <div class="body">
+            <div class="row1"><span class="from">Jane Smith</span><span class="time">9:12 AM</span></div>
+            <div class="subj">Re: West Region Expansion <span class="tag reply">Reply drafted</span></div>
+            <div class="prev">Any update on the pricing? Client is asking…</div>
+          </div>
+        </div>
+
+        <div class="msg">
+          <div class="av" style="background:#8B5CF6">AC</div>
+          <div class="body">
+            <div class="row1"><span class="from">Acme Corporation</span><span class="time">8:40 AM</span></div>
+            <div class="subj">Renewal — legal review status</div>
+            <div class="prev">Our counsel has a few redlines on section 4…</div>
+          </div>
+        </div>
+
+        <div class="msg">
+          <div class="av" style="background:#F59E0B">ML</div>
+          <div class="body">
+            <div class="row1"><span class="from">Mark Lee</span><span class="time">Yest.</span></div>
+            <div class="subj">Project North Star — phase 2 budget</div>
+            <div class="prev">Need your sign-off before Friday to stay on…</div>
+          </div>
+        </div>
+
+        <div class="msg">
+          <div class="av" style="background:#10B981">SJ</div>
+          <div class="body">
+            <div class="row1"><span class="from">Sarah Johnson</span><span class="time">Yest.</span></div>
+            <div class="subj">Contract renewal discussion</div>
+            <div class="prev">Following up on the terms we discussed…</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-t"><span class="dot" style="background:var(--blue)"></span> FYI · 17</div>
+        <div class="msg">
+          <div class="av" style="background:#94a3b8">Q2</div>
+          <div class="body">
+            <div class="row1"><span class="from">Marketing team</span><span class="time">7:05 AM</span></div>
+            <div class="subj">Q2 campaign — weekly numbers</div>
+            <div class="prev">Summarized by Sable · no action needed</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="handled">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        11 sorted &amp; archived by Sable — receipts, newsletters, calendar noise
+      </div>
+    </div>
+
+    <!-- Thread + draft -->
+    <div class="panel">
+      <div class="thread">
+        <div class="th-head">
+          <div>
+            <h1>West Region Expansion — pricing</h1>
+            <div class="meta">Jane Smith · Regional Director, West · thread of 6</div>
+          </div>
+          <span class="pill">Needs your reply</span>
+        </div>
+
+        <div class="email">
+          <div class="eh"><div class="av">JS</div><div><b>Jane Smith</b> &nbsp;<small>to you · 9:12 AM</small></div></div>
+          <p>Hi Glenn — the client came back and they're keen to move on the West Region expansion. Can you send over the updated pricing you mentioned? They'd like it before their board meeting Thursday.</p>
+        </div>
+
+        <!-- Draft in your voice -->
+        <div class="draft">
+          <div class="draft-h">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 5L19 9.8 14 11.6 12 17l-1.8-5.4L5 9.8 10.2 8 12 3z" fill="currentColor"/></svg>
+            Drafted in your voice
+          </div>
+          <div class="draft-b">
+            <p>Hi Jane,</p>
+            <p>Thanks for the nudge — good news on the board timing. I've attached the updated West Region pricing; the main change from last time is the volume tier kicking in at 250 seats, which should land well with them. Happy to jump on a quick call Wednesday if it's easier to walk through before Thursday.</p>
+            <p>Best,<br>Glenn</p>
+
+            <div class="ctx">
+              <span class="lbl">Sable used:</span>
+              <span class="c"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2"/></svg> your last 3 emails with Jane</span>
+              <span class="c"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18l-6-4-6 4V3z" stroke="currentColor" stroke-width="2"/></svg> West Region pricing sheet</span>
+              <span class="c"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v6c0 4-3 6-7 8-4-2-7-4-7-8V7l7-4z" stroke="currentColor" stroke-width="2"/></svg> your writing style</span>
+            </div>
+
+            <div class="actions">
+              <button class="btn primary">Send</button>
+              <button class="btn">Edit</button>
+              <button class="btn ghost">Regenerate</button>
+              <span class="note"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg> Sable always asks before sending</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Your apps stay the source of record. Sable reads and drafts — it never sends without you. · Gmail connected
+  </div>
+</div>
+<div class="caption">Sable — Communications lens · first-pass V1 mockup (illustrative). Works over your existing email; apps remain the system of record.</div>
+</body>
+</html>

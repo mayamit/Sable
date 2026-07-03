@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sable — Navigator approval (V1 mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F9; --surface:#FFFFFF; --ink:#1B1F2A; --ink-2:#454B57; --muted:#6B7280;
+    --border:#E7E9EE; --primary:#5B4EF0; --primary-700:#4A3ED6; --primary-50:#ECEAFE;
+    --grad:linear-gradient(135deg,#6A5CF6,#8B7CF8);
+    --green:#10B981; --amber:#F59E0B; --blue:#3B82F6; --violet:#8B5CF6; --rose:#F43F5E;
+    --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  .app{max-width:860px;margin:0 auto;padding:20px}
+  .topbar{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
+  .mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:0 4px 12px rgba(107,92,246,.4)}
+  .mark svg{width:16px;height:16px}
+  .brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:0}
+  .who{margin-left:auto;display:flex;align-items:center;gap:9px}
+  .avatar{width:32px;height:32px;border-radius:50%;background:#dfe3ea;display:grid;place-items:center;font-weight:700;font-size:12px;color:#404654}
+
+  .head{margin:18px 2px 6px}
+  .head h1{margin:0;font-size:22px;letter-spacing:-.02em}
+  .head p{margin:6px 0 0;color:var(--muted);font-size:14px}
+  .head b{color:var(--ink)}
+
+  /* auto-applied strip (deterministic-first) */
+  .auto{margin:14px 0;display:flex;align-items:center;gap:10px;background:#f2fbf6;border:1px solid #cdeede;border-radius:12px;padding:11px 15px;font-size:13px;color:#20694a}
+  .auto svg{width:16px;height:16px;color:var(--green);flex:none}
+  .auto a{color:#20694a;font-weight:600;margin-left:auto;text-decoration:none;white-space:nowrap}
+
+  .queue{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .card.open{border-color:#d9d4fb;box-shadow:0 10px 30px rgba(91,78,240,.12)}
+  .crow{display:flex;align-items:center;gap:13px;padding:14px 16px;cursor:pointer}
+  .tico{width:38px;height:38px;border-radius:10px;flex:none;display:grid;place-items:center;color:#fff}
+  .tico svg{width:19px;height:19px}
+  .ctitle{flex:1;min-width:0}
+  .ctitle .t{font-size:14.5px;font-weight:600}
+  .ctitle .s{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .badge{font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:999px;white-space:nowrap}
+  .badge.out{background:#fff2e6;color:#b26a00}
+  .badge.cal{background:#eaf1ff;color:#2b57c4}
+  .badge.rec{background:#f0ecff;color:#5a49c4}
+  .chev{color:var(--muted);flex:none}
+  .chev svg{width:18px;height:18px}
+
+  .detail{border-top:1px solid var(--border);padding:16px 18px 18px;background:#fcfcff}
+  .why{display:flex;gap:9px;font-size:13px;color:var(--ink-2);background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 13px;margin-bottom:14px}
+  .why svg{width:15px;height:15px;color:var(--primary);flex:none;margin-top:1px}
+  .why b{color:var(--ink)}
+
+  .prev{border:1px solid var(--border);border-radius:11px;overflow:hidden;margin-bottom:14px}
+  .prev .ph{background:#fafbfc;border-bottom:1px solid var(--border);padding:9px 13px;font-size:12.5px;color:var(--muted)}
+  .prev .ph b{color:var(--ink)}
+  .prev .pb{padding:13px 15px}
+  .prev .pb p{margin:0 0 9px;font-size:13.5px;line-height:1.6;color:var(--ink)}
+  .prev .pb p:last-child{margin-bottom:0}
+
+  .actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .btn{font-family:inherit;font-weight:600;font-size:13.5px;border-radius:10px;padding:10px 16px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--ink)}
+  .btn.primary{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 12px rgba(91,78,240,.3);display:flex;align-items:center;gap:7px}
+  .btn.primary svg{width:15px;height:15px}
+  .btn.ghost{border-color:transparent;background:transparent;color:var(--rose)}
+  .undo{margin-left:auto;font-size:12px;color:var(--muted)}
+
+  .foot{margin-top:16px;text-align:center;color:var(--muted);font-size:12.5px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .foot svg{width:14px;height:14px;color:var(--primary)}
+  .caption{max-width:860px;margin:10px auto 0;color:#9aa1ad;font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="currentColor"/></svg></span> <span>Sable<small>Navigator</small></span></div>
+    <div class="who"><div style="text-align:right;font-size:13px"><b>Glenn</b></div><div class="avatar">GH</div></div>
+  </div>
+
+  <div class="head">
+    <h1>Review &amp; approve</h1>
+    <p><b>3 things</b> Sable prepared for you. Nothing is sent or changed until you approve.</p>
+  </div>
+
+  <div class="auto">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    12 routine updates were applied automatically today — filing, labels, contact details. Only outbound actions and anything unusual stop here.
+    <a href="#">See what changed</a>
+  </div>
+
+  <div class="queue">
+
+    <!-- Expanded: send email -->
+    <div class="card open">
+      <div class="crow">
+        <div class="tico" style="background:#3B82F6"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2"/></svg></div>
+        <div class="ctitle"><div class="t">Send reply to Jane Smith</div><div class="s">Email · West Region pricing</div></div>
+        <span class="badge out">Outbound · needs approval</span>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none"><path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="detail">
+        <div class="why">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+          <div><b>Why Sable prepared this:</b> Jane asked for the updated pricing 3 days ago and you told her you'd send it. Her client's board meets Thursday.</div>
+        </div>
+        <div class="prev">
+          <div class="ph"><b>To:</b> Jane Smith &nbsp;·&nbsp; <b>Subject:</b> Re: West Region Expansion &nbsp;·&nbsp; attaching <b>West_Region_Pricing_v2.pdf</b></div>
+          <div class="pb">
+            <p>Hi Jane,</p>
+            <p>Thanks for the nudge — good news on the board timing. I've attached the updated West Region pricing; the main change is the volume tier kicking in at 250 seats. Happy to jump on a quick call Wednesday to walk through it before Thursday.</p>
+            <p>Best,<br>Glenn</p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn primary"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Approve &amp; send</button>
+          <button class="btn">Edit draft</button>
+          <button class="btn ghost">Discard</button>
+          <span class="undo">You can undo for 30s after sending</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsed: schedule -->
+    <div class="card">
+      <div class="crow">
+        <div class="tico" style="background:#F43F5E"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v15H4z" stroke="currentColor" stroke-width="2"/><path d="M4 9h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"/></svg></div>
+        <div class="ctitle"><div class="t">Schedule 30 min with Acme's legal team</div><div class="s">Calendar · proposes Wed 11:00 AM, sends invite to 2 people</div></div>
+        <span class="badge cal">Calendar · needs approval</span>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </div>
+
+    <!-- Collapsed: add commitment -->
+    <div class="card">
+      <div class="crow">
+        <div class="tico" style="background:#8B5CF6"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v6c0 4-3 6-7 8-4-2-7-4-7-8V7l7-4z" stroke="currentColor" stroke-width="2"/></svg></div>
+        <div class="ctitle"><div class="t">Add commitment — North Star phase 2 budget sign-off</div><div class="s">Foundation · due Friday · flagged from Mark Lee's email</div></div>
+        <span class="badge rec">Record · needs approval</span>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v6c0 4-3 6-7 8-4-2-7-4-7-8V7l7-4z" stroke="currentColor" stroke-width="2"/></svg>
+    You are always the last step. Sable proposes; you decide.
+  </div>
+</div>
+<div class="caption">Sable — Navigator approval &amp; review digest · first-pass V1 mockup (illustrative). Deterministic-first: routine writes commit automatically; outbound actions and anything unusual are gated for your review.</div>
+</body>
+</html>

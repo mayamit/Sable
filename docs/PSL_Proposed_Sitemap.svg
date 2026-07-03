@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1020" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <style>
+      .title{font-size:30px;font-weight:700;fill:#1F3A5F}
+      .sub{font-size:15px;fill:#6B7280}
+      .home{font-size:19px;font-weight:700;fill:#ffffff}
+      .p1{font-size:15px;font-weight:700;fill:#12314f}
+      .p1s{font-size:11.5px;fill:#33506b}
+      .p2{font-size:14px;font-weight:700;fill:#33506b}
+      .leaf{font-size:12.5px;font-weight:700;fill:#1F3A5F}
+      .lg{font-size:13px;fill:#374151}
+      .sec{font-size:15px;font-weight:700;fill:#1F3A5F}
+      .anat{font-size:12.5px;fill:#12314f}
+      .anatn{font-size:12.5px;font-weight:700;fill:#2E75B6}
+    </style>
+    <linearGradient id="homeg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E5E8F"/><stop offset="1" stop-color="#1F3A5F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="1020" fill="#ffffff"/>
+  <text x="60" y="58" class="title">PSL — Proposed Website Sitemap &amp; Homepage Anatomy</text>
+  <text x="60" y="84" class="sub">Phase 1 launches the differentiation-carrying pages; Phase 2 grows into the full multi-page architecture without changing URLs.</text>
+  <line x1="60" y1="100" x2="1380" y2="100" stroke="#2E75B6" stroke-width="2"/>
+
+  <!-- ===================== LEFT: SITEMAP TREE ===================== -->
+  <!-- Home node -->
+  <rect x="120" y="130" width="230" height="60" rx="10" fill="url(#homeg)"/>
+  <text x="235" y="160" text-anchor="middle" class="home">Home</text>
+  <text x="235" y="180" text-anchor="middle" font-size="12" fill="#cfe0f0">psl.com — full narrative</text>
+
+  <!-- trunk down -->
+  <line x1="235" y1="190" x2="235" y2="230" stroke="#9DB4CC" stroke-width="2"/>
+  <line x1="150" y1="230" x2="320" y2="230" stroke="#9DB4CC" stroke-width="2"/>
+  <!-- vertical rail for the primary pages -->
+  <line x1="150" y1="230" x2="150" y2="815" stroke="#9DB4CC" stroke-width="2"/>
+
+  <!-- Primary Phase-1 pages -->
+  <!-- helper positions -->
+  <!-- 1 How it works -->
+  <g>
+    <line x1="150" y1="262" x2="185" y2="262" stroke="#9DB4CC" stroke-width="2"/>
+    <rect x="185" y="238" width="245" height="48" rx="8" fill="#EAF1F8" stroke="#2E75B6" stroke-width="1.5"/>
+    <text x="199" y="258" class="p1">How it works</text>
+    <text x="199" y="276" class="p1s">The Foundation: resolve once → hold → reuse</text>
+  </g>
+  <!-- 2 Lenses -->
+  <g>
+    <line x1="150" y1="322" x2="185" y2="322" stroke="#9DB4CC" stroke-width="2"/>
+    <rect x="185" y="298" width="245" height="48" rx="8" fill="#EAF1F8" stroke="#2E75B6" stroke-width="1.5"/>
+    <text x="199" y="318" class="p1">Lenses</text>
+    <text x="199" y="336" class="p1s">Overview — the surfaces you touch</text>
+    <!-- children -->
+    <line x1="300" y1="346" x2="300" y2="372" stroke="#C3D2E2" stroke-width="1.5"/>
+    <line x1="300" y1="372" x2="470" y2="372" stroke="#C3D2E2" stroke-width="1.5"/>
+    <rect x="470" y="356" width="180" height="34" rx="7" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.3"/>
+    <text x="482" y="378" class="leaf">Communications lens</text>
+    <line x1="300" y1="372" x2="300" y2="410" stroke="#C3D2E2" stroke-width="1.5"/>
+    <line x1="300" y1="410" x2="470" y2="410" stroke="#C3D2E2" stroke-width="1.5"/>
+    <rect x="470" y="394" width="180" height="34" rx="7" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.3"/>
+    <text x="482" y="416" class="leaf">Reasoning lens</text>
+    <text x="662" y="390" font-size="11.5" fill="#6B7280">individual lens pages</text>
+    <text x="662" y="406" font-size="11.5" fill="#6B7280">= Phase 2 (SEO/depth)</text>
+  </g>
+  <!-- 3 Privacy & Trust (highlight) -->
+  <g>
+    <line x1="150" y1="462" x2="185" y2="462" stroke="#9DB4CC" stroke-width="2"/>
+    <rect x="185" y="438" width="245" height="48" rx="8" fill="#DDEBD6" stroke="#4B8B3B" stroke-width="2"/>
+    <text x="199" y="458" class="p1">Privacy &amp; Trust  ★</text>
+    <text x="199" y="476" class="p1s">Gated writes · audit · data control</text>
+  </g>
+  <!-- 4 Home Server (highlight) -->
+  <g>
+    <line x1="150" y1="522" x2="185" y2="522" stroke="#9DB4CC" stroke-width="2"/>
+    <rect x="185" y="498" width="245" height="48" rx="8" fill="#DDEBD6" stroke="#4B8B3B" stroke-width="2"/>
+    <text x="199" y="518" class="p1">Home Server  ★</text>
+    <text x="199" y="536" class="p1s">The appliance tier — data stays home</text>
+  </g>
+  <!-- 5 Pricing -->
+  <g>
+    <line x1="150" y1="582" x2="185" y2="582" stroke="#9DB4CC" stroke-width="2"/>
+    <rect x="185" y="558" width="245" height="48" rx="8" fill="#EAF1F8" stroke="#2E75B6" stroke-width="1.5"/>
+    <text x="199" y="578" class="p1">Pricing</text>
+    <text x="199" y="596" class="p1s">$100/mo — Cloud &amp; Home Server</text>
+  </g>
+  <!-- 6 App -->
+  <g>
+    <line x1="150" y1="642" x2="185" y2="642" stroke="#9DB4CC" stroke-width="2"/>
+    <rect x="185" y="618" width="245" height="48" rx="8" fill="#EAF1F8" stroke="#2E75B6" stroke-width="1.5"/>
+    <text x="199" y="638" class="p1">App</text>
+    <text x="199" y="656" class="p1s">Log in · Get early access / Waitlist</text>
+  </g>
+  <!-- 7 Legal -->
+  <g>
+    <line x1="150" y1="702" x2="185" y2="702" stroke="#9DB4CC" stroke-width="2"/>
+    <rect x="185" y="678" width="245" height="48" rx="8" fill="#EAF1F8" stroke="#2E75B6" stroke-width="1.5"/>
+    <text x="199" y="698" class="p1">Legal</text>
+    <text x="199" y="716" class="p1s">Privacy Policy · Terms · DPA</text>
+  </g>
+
+  <!-- Phase 2 cluster -->
+  <text x="120" y="775" class="sec">Phase 2 — grow into the full site</text>
+  <g>
+    <rect x="120" y="788" width="185" height="40" rx="8" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="212" y="806" text-anchor="middle" class="p2">Security</text>
+    <text x="212" y="821" text-anchor="middle" font-size="10.5" fill="#6B7280">technical / compliance</text>
+
+    <rect x="315" y="788" width="185" height="40" rx="8" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="407" y="806" text-anchor="middle" class="p2">Company / Blog</text>
+    <text x="407" y="821" text-anchor="middle" font-size="10.5" fill="#6B7280">about · manifesto</text>
+
+    <rect x="510" y="788" width="185" height="40" rx="8" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="602" y="806" text-anchor="middle" class="p2">Vision / What&#8217;s next</text>
+    <text x="602" y="821" text-anchor="middle" font-size="10.5" fill="#6B7280">undated — not a dated roadmap</text>
+
+    <rect x="120" y="838" width="185" height="40" rx="8" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="212" y="856" text-anchor="middle" class="p2">Docs / Help</text>
+    <text x="212" y="871" text-anchor="middle" font-size="10.5" fill="#6B7280">support center</text>
+
+    <rect x="315" y="838" width="185" height="40" rx="8" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="407" y="856" text-anchor="middle" class="p2">For AI assistants</text>
+    <text x="407" y="871" text-anchor="middle" font-size="10.5" fill="#6B7280">answer-engine / llms.txt</text>
+
+    <rect x="510" y="838" width="140" height="40" rx="8" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="580" y="856" text-anchor="middle" class="p2">Use-case pages</text>
+    <text x="580" y="871" text-anchor="middle" font-size="10.5" fill="#6B7280">per persona</text>
+  </g>
+
+  <!-- Legend -->
+  <g>
+    <rect x="120" y="918" width="26" height="16" rx="4" fill="#EAF1F8" stroke="#2E75B6" stroke-width="1.5"/>
+    <text x="154" y="931" class="lg">Phase 1 page</text>
+    <rect x="270" y="918" width="26" height="16" rx="4" fill="#DDEBD6" stroke="#4B8B3B" stroke-width="2"/>
+    <text x="304" y="931" class="lg">★ Differentiator (ship first)</text>
+    <rect x="520" y="918" width="26" height="16" rx="4" fill="#ffffff" stroke="#9DB4CC" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="554" y="931" class="lg">Phase 2 page</text>
+  </g>
+
+  <!-- Divider between panels -->
+  <line x1="810" y1="130" x2="810" y2="960" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- ===================== RIGHT: HOMEPAGE ANATOMY STACK ===================== -->
+  <text x="855" y="152" class="sec">Homepage anatomy (top → bottom)</text>
+  <text x="855" y="172" class="sub">The canonical AI-product stack, tuned to PSL</text>
+
+  <!-- stack rows -->
+  <!-- each row: number chip + label + note -->
+  <g>
+    <!-- row template values -->
+    <!-- 1 -->
+    <rect x="855" y="188" width="470" height="46" rx="8" fill="#1F3A5F"/>
+    <circle cx="884" cy="211" r="14" fill="#ffffff"/><text x="884" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="#1F3A5F">1</text>
+    <text x="910" y="207" font-size="14" font-weight="700" fill="#ffffff">Nav</text>
+    <text x="910" y="224" font-size="11.5" fill="#cfe0f0">How it works · Lenses · Privacy · Home Server · Pricing · CTA</text>
+
+    <!-- 2 Hero -->
+    <rect x="855" y="240" width="470" height="52" rx="8" fill="#2E5E8F"/>
+    <circle cx="884" cy="266" r="14" fill="#ffffff"/><text x="884" y="271" text-anchor="middle" font-size="14" font-weight="700" fill="#1F3A5F">2</text>
+    <text x="910" y="262" font-size="14" font-weight="700" fill="#ffffff">Hero — outcome headline</text>
+    <text x="910" y="280" font-size="11.5" fill="#e3eef8">“An AI that actually knows you.” + product visual + CTA</text>
+
+    <!-- rows 3-12 light -->
+    <g font-size="13.5">
+      <!-- 3 -->
+      <rect x="855" y="298" width="470" height="34" rx="7" fill="#EAF1F8" stroke="#C3D2E2"/>
+      <circle cx="884" cy="315" r="12" fill="#2E75B6"/><text x="884" y="319" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">3</text>
+      <text x="908" y="319" class="anat"><tspan font-weight="700">Problem</tspan> — “Today’s AI forgets you every time.”</text>
+
+      <!-- 4 -->
+      <rect x="855" y="336" width="470" height="34" rx="7" fill="#EAF1F8" stroke="#C3D2E2"/>
+      <circle cx="884" cy="353" r="12" fill="#2E75B6"/><text x="884" y="357" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">4</text>
+      <text x="908" y="357" class="anat"><tspan font-weight="700">The idea</tspan> — Foundation diagram: resolve → hold → reuse</text>
+
+      <!-- 5 -->
+      <rect x="855" y="374" width="470" height="34" rx="7" fill="#EAF1F8" stroke="#C3D2E2"/>
+      <circle cx="884" cy="391" r="12" fill="#2E75B6"/><text x="884" y="395" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">5</text>
+      <text x="908" y="395" class="anat"><tspan font-weight="700">The lenses</tspan> — Communications &amp; Reasoning, with screenshots</text>
+
+      <!-- 6 -->
+      <rect x="855" y="412" width="470" height="34" rx="7" fill="#EAF1F8" stroke="#C3D2E2"/>
+      <circle cx="884" cy="429" r="12" fill="#2E75B6"/><text x="884" y="433" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">6</text>
+      <text x="908" y="433" class="anat"><tspan font-weight="700">Works over your apps</tspan> — connectors; apps stay source of record</text>
+
+      <!-- 7 highlight -->
+      <rect x="855" y="450" width="470" height="34" rx="7" fill="#DDEBD6" stroke="#4B8B3B" stroke-width="1.6"/>
+      <circle cx="884" cy="467" r="12" fill="#4B8B3B"/><text x="884" y="471" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">7</text>
+      <text x="908" y="471" class="anat"><tspan font-weight="700">Trust by design ★</tspan> — gated writes · source traces · audit</text>
+
+      <!-- 8 highlight -->
+      <rect x="855" y="488" width="470" height="34" rx="7" fill="#DDEBD6" stroke="#4B8B3B" stroke-width="1.6"/>
+      <circle cx="884" cy="505" r="12" fill="#4B8B3B"/><text x="884" y="509" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">8</text>
+      <text x="908" y="509" class="anat"><tspan font-weight="700">Your data, your place ★</tspan> — Cloud vs Home-Server tiers</text>
+
+      <!-- 9 -->
+      <rect x="855" y="526" width="470" height="34" rx="7" fill="#EAF1F8" stroke="#C3D2E2"/>
+      <circle cx="884" cy="543" r="12" fill="#2E75B6"/><text x="884" y="547" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">9</text>
+      <text x="908" y="547" class="anat"><tspan font-weight="700">Credibility</tspan> — founder / early-user proof, press badges</text>
+
+      <!-- 10 -->
+      <rect x="855" y="564" width="470" height="34" rx="7" fill="#EAF1F8" stroke="#C3D2E2"/>
+      <circle cx="884" cy="581" r="12" fill="#2E75B6"/><text x="884" y="585" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">10</text>
+      <text x="908" y="585" class="anat"><tspan font-weight="700">Pricing</tspan> — $100/mo, two tiers, one toggle</text>
+
+      <!-- 11 -->
+      <rect x="855" y="602" width="470" height="34" rx="7" fill="#EAF1F8" stroke="#C3D2E2"/>
+      <circle cx="884" cy="619" r="12" fill="#2E75B6"/><text x="884" y="623" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">11</text>
+      <text x="908" y="623" class="anat"><tspan font-weight="700">FAQ</tspan> — “Is this a chatbot?” · “What can it see?”</text>
+
+      <!-- 12 -->
+      <rect x="855" y="640" width="470" height="34" rx="7" fill="#1F3A5F"/>
+      <circle cx="884" cy="657" r="12" fill="#ffffff"/><text x="884" y="661" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1F3A5F">12</text>
+      <text x="908" y="661" font-size="13.5" fill="#ffffff"><tspan font-weight="700">Final CTA + footer</tspan> — repeat promise · 4-column footer</text>
+    </g>
+  </g>
+
+  <!-- framing principle callout -->
+  <rect x="855" y="700" width="470" height="132" rx="10" fill="#FBF7EC" stroke="#D8C89A" stroke-width="1.4"/>
+  <text x="875" y="726" font-size="14" font-weight="700" fill="#7A5B12">Framing principle</text>
+  <text x="875" y="750" font-size="12.5" fill="#4b4636">Lead with the outcome, not the architecture.</text>
+  <text x="875" y="770" font-size="12.5" fill="#4b4636">Show the surface (real screenshots), not a prompt box.</text>
+  <text x="875" y="790" font-size="12.5" fill="#4b4636">Sell memory and trust together — they are one story.</text>
+  <text x="875" y="810" font-size="12.5" fill="#4b4636">Contrast openly: “a packaged product, not a chatbot.”</text>
+
+  <text x="60" y="988" class="sub">PSL — Website Research · Proposed IA · July 2026 · companion to PSL_Website_Research_Homepage_IA.docx</text>
+</svg>

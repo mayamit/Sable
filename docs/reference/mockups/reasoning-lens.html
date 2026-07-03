@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sable — Reasoning lens (V1 mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F9; --surface:#FFFFFF; --ink:#1B1F2A; --ink-2:#454B57; --muted:#6B7280;
+    --border:#E7E9EE; --primary:#5B4EF0; --primary-700:#4A3ED6; --primary-50:#ECEAFE;
+    --grad:linear-gradient(135deg,#6A5CF6,#8B7CF8);
+    --green:#10B981; --amber:#F59E0B; --blue:#3B82F6; --violet:#8B5CF6; --rose:#F43F5E;
+    --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  .app{max-width:1200px;margin:0 auto;padding:20px}
+  .topbar{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px 16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
+  .mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:0 4px 12px rgba(107,92,246,.4)}
+  .mark svg{width:16px;height:16px}
+  .lenswitch{display:flex;gap:6px;margin-left:8px}
+  .chip{font-size:13px;font-weight:600;color:var(--ink-2);padding:7px 13px;border-radius:999px;border:1px solid var(--border);background:#fff;cursor:pointer}
+  .chip.active{background:var(--primary-50);color:var(--primary-700);border-color:#d9d4fb}
+  .intent{flex:1;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 14px;color:var(--muted);font-size:14px;min-width:160px}
+  .intent svg{width:15px;height:15px;color:var(--primary)}
+  .who{display:flex;align-items:center;gap:9px}
+  .avatar{width:32px;height:32px;border-radius:50%;background:#dfe3ea;display:grid;place-items:center;font-weight:700;font-size:12px;color:#404654}
+  .who small{display:block;color:var(--muted);font-size:11px}
+  .who b{font-size:13px}
+  .grid{display:grid;grid-template-columns:250px 1fr;gap:16px;margin-top:16px}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .panel-h{padding:14px 16px;border-bottom:1px solid var(--border)}
+  .panel-h h2{margin:0;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .rec{padding:8px}
+  .rec a{display:block;padding:10px 11px;border-radius:9px;font-size:13px;color:var(--ink-2);text-decoration:none;cursor:pointer}
+  .rec a:hover{background:#fafbfc}
+  .rec a.active{background:var(--primary-50);color:var(--primary-700);font-weight:600}
+  .rec .t{font-size:11px;color:var(--muted);margin-top:2px}
+  /* conversation */
+  .conv{padding:22px 26px}
+  .q{display:flex;justify-content:flex-end;margin-bottom:20px}
+  .q .bubble{background:var(--primary);color:#fff;padding:11px 16px;border-radius:16px 16px 4px 16px;font-size:14.5px;max-width:70%;box-shadow:0 4px 12px rgba(91,78,240,.25)}
+  .ans{display:flex;gap:12px}
+  .ans .sib{width:32px;height:32px;border-radius:9px;background:var(--grad);flex:none;display:grid;place-items:center;color:#fff}
+  .ans .sib svg{width:16px;height:16px}
+  .ans .content{min-width:0;flex:1}
+  .ans h3{margin:2px 0 10px;font-size:13px;color:var(--muted);font-weight:600}
+  .ans p{margin:0 0 12px;font-size:15.5px;line-height:1.7;color:var(--ink)}
+  .cite{display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 4px;font-size:10.5px;font-weight:700;color:var(--primary-700);background:var(--primary-50);border:1px solid #ddd7fb;border-radius:5px;vertical-align:2px;margin:0 1px;cursor:pointer}
+  .keyfacts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 16px}
+  .kf{border:1px solid var(--border);border-radius:11px;padding:12px 14px}
+  .kf .k{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .kf .v{font-size:15px;font-weight:600;margin-top:3px}
+  .kf .v.warn{color:#b26a00}
+  /* sources */
+  .sources{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:6px}
+  .sources .sh{background:#fafbfc;padding:10px 14px;font-size:12px;font-weight:700;color:var(--ink-2);display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+  .sources .sh svg{width:14px;height:14px;color:var(--green)}
+  .src{display:flex;gap:11px;padding:11px 14px;border-bottom:1px solid var(--border);align-items:center}
+  .src:last-child{border-bottom:0}
+  .src .ico{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;color:#fff}
+  .src .ico svg{width:15px;height:15px}
+  .src .num{font-size:10.5px;font-weight:700;color:var(--primary-700);background:var(--primary-50);border-radius:5px;padding:1px 5px;margin-right:2px}
+  .src .m{font-size:13.5px;font-weight:600}
+  .src .s{font-size:12px;color:var(--muted)}
+  .src .go{margin-left:auto;font-size:12px;color:var(--primary);font-weight:600;white-space:nowrap}
+  /* followups */
+  .follow{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .fu{font-size:13px;font-weight:600;color:var(--ink-2);background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 14px;cursor:pointer}
+  .fu:hover{border-color:#d9d4fb;color:var(--primary-700);background:var(--primary-50)}
+  .trust{margin-top:18px;display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted);background:#fbfbfe;border:1px dashed #e2ddfb;border-radius:10px;padding:10px 14px}
+  .trust svg{width:15px;height:15px;color:var(--primary)}
+  .ask{margin-top:16px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:11px 16px;color:var(--muted);font-size:14px;box-shadow:var(--shadow)}
+  .ask svg{width:16px;height:16px;color:var(--primary)}
+  .ask .send{margin-left:auto;width:32px;height:32px;border-radius:50%;background:var(--grad);display:grid;place-items:center}
+  .ask .send svg{width:15px;height:15px;color:#fff}
+  .caption{max-width:1200px;margin:10px auto 0;color:#9aa1ad;font-size:12px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="currentColor"/></svg></span> Sable</div>
+    <div class="lenswitch">
+      <span class="chip">Communications</span>
+      <span class="chip active">Reasoning</span>
+    </div>
+    <div class="intent">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 5L19 9.8 14 11.6 12 17l-1.8-5.4L5 9.8 10.2 8 12 3z" fill="currentColor"/></svg>
+      Ask anything about your world…
+    </div>
+    <div class="who">
+      <div style="text-align:right"><b>Glenn</b><small>Reasoning</small></div>
+      <div class="avatar">GH</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- recent -->
+    <div class="panel">
+      <div class="panel-h"><h2>Recent</h2></div>
+      <div class="rec">
+        <a class="active">What do I owe Jane, and where does Acme stand?<div class="t">Just now</div></a>
+        <a>What's at risk this week?<div class="t">Yesterday</div></a>
+        <a>Summarize my last call with Mark Lee<div class="t">Yesterday</div></a>
+        <a>Who haven't I replied to in 5+ days?<div class="t">Mon</div></a>
+        <a>What did we agree on North Star phase 2?<div class="t">Mon</div></a>
+      </div>
+    </div>
+
+    <!-- conversation -->
+    <div class="panel">
+      <div class="conv">
+        <div class="q"><div class="bubble">What do I owe Jane, and where does the Acme renewal stand?</div></div>
+
+        <div class="ans">
+          <div class="sib"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" fill="currentColor"/></svg></div>
+          <div class="content">
+            <h3>Answered from your own email, calendar and documents</h3>
+
+            <p>You owe <b>Jane Smith</b> the updated West Region pricing — she asked three days ago and you haven't replied yet<span class="cite">1</span>. She needs it before her client's board meeting on <b>Thursday</b><span class="cite">2</span>.</p>
+
+            <p>On <b>Acme</b>: the renewal is due in <b>14 days (May 30)</b><span class="cite">3</span>. It's currently waiting on Acme's legal review — their counsel raised redlines on section 4 this morning<span class="cite">4</span>. Nothing is blocked on your side yet.</p>
+
+            <div class="keyfacts">
+              <div class="kf"><div class="k">You owe Jane</div><div class="v warn">West Region pricing · overdue 3 days</div></div>
+              <div class="kf"><div class="k">Acme renewal</div><div class="v">Due May 30 · awaiting their legal</div></div>
+            </div>
+
+            <div class="sources">
+              <div class="sh"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Traced to 4 sources in your data</div>
+              <div class="src">
+                <div class="ico" style="background:#3B82F6"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2"/></svg></div>
+                <div><div class="m"><span class="num">1</span> Email from Jane Smith</div><div class="s">"Re: West Region Expansion" · 3 days ago</div></div>
+                <span class="go">Open →</span>
+              </div>
+              <div class="src">
+                <div class="ico" style="background:#F43F5E"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v15H4z" stroke="currentColor" stroke-width="2"/><path d="M4 9h16M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"/></svg></div>
+                <div><div class="m"><span class="num">2</span> Calendar — client board meeting</div><div class="s">Thursday, 2:00 PM · from Jane's invite</div></div>
+                <span class="go">Open →</span>
+              </div>
+              <div class="src">
+                <div class="ico" style="background:#8B5CF6"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18l-6-4-6 4V3z" stroke="currentColor" stroke-width="2"/></svg></div>
+                <div><div class="m"><span class="num">3</span> Acme renewal contract</div><div class="s">Term ends May 30 · Documents</div></div>
+                <span class="go">Open →</span>
+              </div>
+              <div class="src">
+                <div class="ico" style="background:#3B82F6"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="2"/></svg></div>
+                <div><div class="m"><span class="num">4</span> Email from Acme Corporation</div><div class="s">"Renewal — legal review status" · today, 8:40 AM</div></div>
+                <span class="go">Open →</span>
+              </div>
+            </div>
+
+            <div class="follow">
+              <span class="fu">Draft the pricing update for Jane →</span>
+              <span class="fu">Summarize the Acme redlines →</span>
+              <span class="fu">What else is at risk this week? →</span>
+            </div>
+
+            <div class="trust">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v6c0 4-3 6-7 8-4-2-7-4-7-8V7l7-4z" stroke="currentColor" stroke-width="2"/></svg>
+              Every answer traces back to your own data. Sable reasons over your world — it won't invent facts about your life.
+            </div>
+          </div>
+        </div>
+
+        <div class="ask">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 5L19 9.8 14 11.6 12 17l-1.8-5.4L5 9.8 10.2 8 12 3z" fill="currentColor"/></svg>
+          Ask a follow-up…
+          <span class="send"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="caption">Sable — Reasoning lens · first-pass V1 mockup (illustrative). A generalist that answers over your own life, with every claim traced to a source.</div>
+</body>
+</html>

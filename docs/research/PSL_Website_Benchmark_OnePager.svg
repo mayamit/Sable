@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1294" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <style>
+      .name{font-size:13.5px;font-weight:700;fill:#12314f}
+      .url{font-size:10.5px;fill:#2E75B6}
+      .pos{font-size:10.5px;font-style:italic;fill:#374151}
+      .take{font-size:10.5px;fill:#333b45}
+      .cat{font-size:13px;font-weight:700;fill:#ffffff}
+      .colh{font-size:11px;font-weight:700;fill:#ffffff}
+      .shape{font-size:9.5px;font-weight:700;fill:#1F3A5F}
+    </style>
+    <linearGradient id="hd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E5E8F"/><stop offset="1" stop-color="#1F3A5F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="1294" fill="#ffffff"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1000" height="112" fill="url(#hd)"/>
+  <text x="40" y="52" font-size="27" font-weight="700" fill="#ffffff">PSL — Website Benchmark: One-Pager</text>
+  <text x="40" y="82" font-size="14" fill="#cfe0f0">The nine adjacent products the proposed sitemap and homepage anatomy were based on — with the single lesson each contributes.</text>
+
+  <!-- Column header -->
+  <rect x="40" y="132" width="920" height="30" fill="#33506b"/>
+  <text x="52" y="152" class="colh">Product</text>
+  <text x="230" y="152" class="colh">Positioning</text>
+  <text x="490" y="152" class="colh">Site shape</text>
+  <text x="600" y="152" class="colh">Lesson taken into the PSL sitemap</text>
+
+  <!-- vertical column separators (light) -->
+  <g stroke="#E2E8F0" stroke-width="1">
+    <line x1="222" y1="162" x2="222" y2="1088"/>
+    <line x1="482" y1="162" x2="482" y2="1088"/>
+    <line x1="592" y1="162" x2="592" y2="1088"/>
+  </g>
+  <rect x="40" y="162" width="920" height="926" fill="none" stroke="#C3D2E2" stroke-width="1.2"/>
+
+  <!-- ============ CATEGORY 1 ============ -->
+  <rect x="40" y="162" width="920" height="26" fill="#4B6A87"/>
+  <text x="52" y="180" class="cat">Personal AI / memory</text>
+
+  <!-- Reflect -->
+  <text x="52" y="212" class="name">Reflect</text>
+  <text x="52" y="228" class="url">reflect.app</text>
+  <text x="52" y="244" class="shape" fill="#6B7280">✔ read live</text>
+  <text x="230" y="216" class="pos">“Think better with Reflect”</text>
+  <text x="230" y="232" class="pos">— notes + AI</text>
+  <text x="490" y="220" class="shape">Minimal one-pager</text>
+  <text x="600" y="212" class="take">Closest tone for PSL’s memory story — it sells</text>
+  <text x="600" y="228" class="take">memory and “hardened security” side by side.</text>
+  <line x1="40" y1="256" x2="960" y2="256" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- Personal.ai -->
+  <text x="52" y="284" class="name">Personal.ai</text>
+  <text x="52" y="300" class="url">personal.ai</text>
+  <text x="52" y="316" class="shape" fill="#6B7280">◐ research</text>
+  <text x="230" y="292" class="pos">“The AI Memory Platform”</text>
+  <text x="490" y="292" class="shape">Full multi-page</text>
+  <text x="600" y="284" class="take">Owns the word “memory.” Also a caution: its drift</text>
+  <text x="600" y="300" class="take">into enterprise abstraction is the trap to avoid.</text>
+  <line x1="40" y1="328" x2="960" y2="328" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- Limitless -->
+  <text x="52" y="356" class="name">Limitless</text>
+  <text x="52" y="372" class="url">limitless.ai</text>
+  <text x="52" y="388" class="shape" fill="#6B7280">✔ read live</text>
+  <text x="230" y="356" class="pos">Recording pendant +</text>
+  <text x="230" y="372" class="pos">memory app (ex-Rewind)</text>
+  <text x="490" y="364" class="shape">Wind-down notice</text>
+  <text x="600" y="356" class="take">Privacy-forward (“confidential cloud”) + a clean</text>
+  <text x="600" y="372" class="take">4-column footer. Acquired by Meta — now wound down.</text>
+  <line x1="40" y1="400" x2="960" y2="400" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- ============ CATEGORY 2 ============ -->
+  <rect x="40" y="400" width="920" height="26" fill="#4B6A87"/>
+  <text x="52" y="418" class="cat">Connector-based AI assistants</text>
+
+  <!-- Cora -->
+  <text x="52" y="450" class="name">Cora</text>
+  <text x="52" y="466" class="url">cora.computer</text>
+  <text x="52" y="482" class="shape" fill="#6B7280">✔ read live</text>
+  <text x="230" y="450" class="pos">“Give Cora your inbox.</text>
+  <text x="230" y="466" class="pos">Take back your life.”</text>
+  <text x="490" y="458" class="shape">Minimal one-pager</text>
+  <text x="600" y="450" class="take">Cleanest single-page template: outcome-first,</text>
+  <text x="600" y="466" class="take">privacy as a named section, pricing on the page.</text>
+  <line x1="40" y1="494" x2="960" y2="494" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- Martin -->
+  <text x="52" y="522" class="name">Martin</text>
+  <text x="52" y="538" class="url">trymartin.com</text>
+  <text x="52" y="554" class="shape" fill="#6B7280">✔ read live</text>
+  <text x="230" y="522" class="pos">“Your personal AI agent”</text>
+  <text x="230" y="538" class="pos">(text / call / email / Slack)</text>
+  <text x="490" y="530" class="shape">Mid multi-page</text>
+  <text x="600" y="522" class="take">Benefit-named features with personality, and it</text>
+  <text x="600" y="538" class="take">makes the surfaces/channels a visible section.</text>
+  <line x1="40" y1="566" x2="960" y2="566" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- Lindy -->
+  <text x="52" y="594" class="name">Lindy</text>
+  <text x="52" y="610" class="url">lindy.ai</text>
+  <text x="52" y="626" class="shape" fill="#6B7280">◐ agent page</text>
+  <text x="230" y="594" class="pos">“The Ultimate AI</text>
+  <text x="230" y="610" class="pos">Executive Assistant”</text>
+  <text x="490" y="602" class="shape">Full multi-page</text>
+  <text x="600" y="594" class="take">The mature end-state IA — per-use-case pages, a</text>
+  <text x="600" y="610" class="take">real Security page, and an answer-engine page.</text>
+  <line x1="40" y1="638" x2="960" y2="638" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- Fyxer -->
+  <text x="52" y="666" class="name">Fyxer</text>
+  <text x="52" y="682" class="url">fyxer.com</text>
+  <text x="52" y="698" class="shape" fill="#6B7280">◐ research</text>
+  <text x="230" y="674" class="pos">“Get ahead of your inbox”</text>
+  <text x="490" y="674" class="shape">Mid multi-page</text>
+  <text x="600" y="666" class="take">Quantifies the onboarding promise (“under 2 min”)</text>
+  <text x="600" y="682" class="take">and publishes an answer-engine page too.</text>
+  <line x1="40" y1="710" x2="960" y2="710" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- ============ CATEGORY 3 ============ -->
+  <rect x="40" y="710" width="920" height="26" fill="#4B6A87"/>
+  <text x="52" y="728" class="cat">Premium consumer AI (hardware)</text>
+
+  <!-- Friend -->
+  <text x="52" y="760" class="name">Friend</text>
+  <text x="52" y="776" class="url">friend.com</text>
+  <text x="52" y="792" class="shape" fill="#6B7280">✔ read live</text>
+  <text x="230" y="768" class="pos">“A new kind of companion”</text>
+  <text x="490" y="768" class="shape">Ultra-minimal</text>
+  <text x="600" y="760" class="take">Extreme minimalism — identity does the selling.</text>
+  <text x="600" y="776" class="take">Borrow the confidence, not the sparseness.</text>
+  <line x1="40" y1="804" x2="960" y2="804" stroke="#EDF1F5" stroke-width="1"/>
+
+  <!-- Plaud -->
+  <text x="52" y="832" class="name">Plaud</text>
+  <text x="52" y="848" class="url">plaud.ai</text>
+  <text x="52" y="864" class="shape" fill="#6B7280">✔ read live</text>
+  <text x="230" y="832" class="pos">AI voice-capture devices</text>
+  <text x="230" y="848" class="pos">(Note Pro, NotePin)</text>
+  <text x="490" y="840" class="shape">Full e-commerce</text>
+  <text x="600" y="832" class="take">Hardware forces e-commerce IA (device pages,</text>
+  <text x="600" y="848" class="take">comparison, checkout) — reference for Home Server.</text>
+
+  <!-- Patterns strip -->
+  <rect x="40" y="900" width="920" height="150" rx="10" fill="#EAF1F8" stroke="#C3D2E2"/>
+  <text x="58" y="928" font-size="14" font-weight="700" fill="#1F3A5F">What they share — the pattern the PSL sitemap follows</text>
+  <text x="58" y="954" class="take">•  One repeatable homepage stack: hero → problem → how-it-works → “it learns you” → social proof → trust → pricing → FAQ → CTA.</text>
+  <text x="58" y="976" class="take">•  Lead with the outcome, not the mechanism — never open with the architecture (“semantic layer”).</text>
+  <text x="58" y="998" class="take">•  Trust / privacy has moved from a footer link to a homepage section, and often its own page.</text>
+  <text x="58" y="1020" class="take">•  Sitemaps cluster into three sizes — minimal one-pager, mid multi-page, full multi-page. PSL launches focused, grows into full.</text>
+  <text x="58" y="1042" class="take">•  Emerging convention: a dedicated “/for-ai-assistants” (llms.txt) page so AI tools describe the product correctly.</text>
+
+  <!-- Legend + footer -->
+  <text x="40" y="1082" font-size="10.5" fill="#6B7280">✔ read live in-browser    ◐ site blocks automated reading / served an agent page — based on web research + visible nav &amp; footer</text>
+  <line x1="40" y1="1096" x2="960" y2="1096" stroke="#2E75B6" stroke-width="1.5"/>
+  <text x="40" y="1118" font-size="11" fill="#6B7280">PSL — Website Research · Benchmark one-pager · July 2026 · companion to PSL_Website_Research_Homepage_IA.docx &amp; PSL_Proposed_Sitemap.svg</text>
+</svg>
