@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Button from '../components/Button.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+
+const points = [
+  {
+    title: 'Data never leaves the house',
+    body: 'Your Foundation lives on the appliance in your home. Nothing is stored on our servers — the strongest privacy guarantee Sable offers.',
+  },
+  {
+    title: 'You hold the keys',
+    body: 'Encryption keys stay with the device. Access is yours, physically and cryptographically.',
+  },
+  {
+    title: 'Same product, same price',
+    body: 'Both V1 lenses, Navigator, and full audit — identical to Cloud, for the same $100/month.',
+  },
+  {
+    title: 'Built for privacy-maximalists',
+    body: 'If “private by default” is the whole point for you, the Home Server is built for exactly that.',
+  },
+];
+---
+
+<Base
+  title="Home Server"
+  path="/home-server"
+  description="A local appliance for Sable — your data never leaves the house. The strongest privacy guarantee, same product and price as Cloud."
+>
+  <PageHeader
+    eyebrow="Home Server"
+    title="Your Sable, in your home."
+    subhead="A local appliance that runs Sable on your own hardware. Your data never leaves the house."
+  />
+
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8">
+      <div class="grid gap-6 sm:grid-cols-2">
+        {
+          points.map((p) => (
+            <div class="rounded-[var(--radius-card)] border border-border bg-surface p-7 shadow-[var(--shadow-card)]">
+              <h3 class="text-lg font-semibold text-ink">{p.title}</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-ink-2">{p.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-10">
+        <Button href="/waitlist" variant="primary">Get early access</Button>
+      </div>
+    </div>
+  </section>
+
+  <FinalCta />
+</Base>

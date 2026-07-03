@@ -1,0 +1,29 @@
+---
+import SectionShell from '../SectionShell.astro';
+import { problem } from '../../data/home';
+---
+
+<SectionShell>
+  <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+    <div>
+      <h2 class="text-3xl font-bold sm:text-4xl">{problem.headline}</h2>
+    </div>
+    <div>
+      {problem.body.map((p) => <p class="mb-4 text-lg text-ink-2">{p}</p>)}
+      <ul class="mt-6 space-y-3">
+        {
+          problem.points.map((point) => (
+            <li class="flex items-center gap-3 text-ink">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-c-rose/10">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" stroke="#F43F5E" stroke-width="2.4" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="text-[15px] font-medium">{point}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</SectionShell>

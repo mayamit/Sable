@@ -1,0 +1,22 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subhead?: string;
+}
+const { eyebrow, title, subhead } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-border">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10"
+    style="background: radial-gradient(50rem 30rem at 85% -20%, rgba(139,124,248,0.14), transparent 60%);"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+    {eyebrow && <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">{eyebrow}</p>}
+    <h1 class="max-w-3xl text-4xl font-bold sm:text-5xl">{title}</h1>
+    {subhead && <p class="mt-5 max-w-2xl text-lg text-ink-2 sm:text-xl">{subhead}</p>}
+  </div>
+</section>

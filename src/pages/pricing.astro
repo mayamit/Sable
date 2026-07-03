@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Pricing from '../components/home/Pricing.astro';
+import FAQ from '../components/home/FAQ.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+---
+
+<Base
+  title="Pricing"
+  path="/pricing"
+  description="One price — $100/month. Two tiers, Cloud or Home Server. Everything included, no feature tiers to decode."
+>
+  <PageHeader
+    eyebrow="Pricing"
+    title="One price. Everything included."
+    subhead="Choose where Sable runs — Cloud or Home Server. The product is the same, and so is the price."
+  />
+  <Pricing />
+  <FAQ />
+  <FinalCta />
+</Base>

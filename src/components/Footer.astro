@@ -1,0 +1,49 @@
+---
+import { footer, site } from '../data/site';
+import { href } from '../lib/url';
+import Logo from './Logo.astro';
+
+const year = 2026; // build-time constant; bump on brand refresh
+---
+
+<footer class="border-t border-border bg-surface">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+      <div class="max-w-xs">
+        <Logo />
+        <p class="mt-4 text-[15px] leading-relaxed text-muted">
+          {site.trustTagline}
+        </p>
+      </div>
+
+      {
+        footer.map((col) => (
+          <div>
+            <h2 class="text-[13px] font-semibold uppercase tracking-wider text-muted">
+              {col.title}
+            </h2>
+            <ul class="mt-4 flex flex-col gap-2.5">
+              {col.links.map((link) => (
+                <li>
+                  <a
+                    href={href(link.href)}
+                    class="text-[15px] text-ink-2 transition-colors hover:text-primary"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>&copy; {year} {site.legalName}. All rights reserved.</p>
+      <p>{site.legalName}</p>
+    </div>
+  </div>
+</footer>

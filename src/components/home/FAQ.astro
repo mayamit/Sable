@@ -1,0 +1,27 @@
+---
+import SectionShell from '../SectionShell.astro';
+import SectionHeading from '../SectionHeading.astro';
+import { faq } from '../../data/home';
+---
+
+<SectionShell class="bg-surface border-y border-border">
+  <SectionHeading eyebrow="FAQ" title={faq.headline} center />
+
+  <div class="mx-auto mt-12 max-w-3xl divide-y divide-border rounded-[var(--radius-card)] border border-border bg-bg">
+    {
+      faq.items.map((item, i) => (
+        <details class="group px-6" open={i === 0}>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-[17px] font-semibold text-ink [&::-webkit-details-marker]:hidden">
+            {item.q}
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-muted transition-transform duration-200 group-open:rotate-45">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+          </summary>
+          <p class="pb-5 pr-10 text-[15px] leading-relaxed text-ink-2">{item.a}</p>
+        </details>
+      ))
+    }
+  </div>
+</SectionShell>

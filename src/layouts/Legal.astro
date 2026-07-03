@@ -1,0 +1,20 @@
+---
+import Base from './Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<Base title={frontmatter.title} path={frontmatter.path} description={frontmatter.description}>
+  <PageHeader eyebrow="Legal" title={frontmatter.title} subhead={frontmatter.updated} />
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-3xl px-5 sm:px-8">
+      <div class="mb-8 rounded-[var(--radius-card)] border border-c-amber/30 bg-c-amber/10 px-5 py-4 text-sm text-ink-2">
+        <strong class="text-ink">Draft — not final.</strong> This is placeholder language pending review by counsel. Do not rely on it as a legal agreement.
+      </div>
+      <article class="prose-legal">
+        <slot />
+      </article>
+    </div>
+  </section>
+</Base>

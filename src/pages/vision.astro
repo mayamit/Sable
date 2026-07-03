@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+import { href } from '../lib/url';
+
+const ahead = [
+  { title: 'More lenses', body: 'New purpose-built surfaces over your Foundation — each one inheriting everything Sable already knows.' },
+  { title: 'The source of truth', body: 'Over time, your Foundation becomes the canonical record of your world — not a copy scattered across apps.' },
+  { title: 'A lens marketplace', body: 'Third parties build lenses on your Foundation, with your permission and your audit trail intact.' },
+  { title: 'A universal work surface', body: 'One place where Sable proposes and you decide — across everything. This is where we’re headed.' },
+];
+---
+
+<Base
+  title="Vision"
+  path="/vision"
+  description="Where Sable is headed: more lenses, your Foundation as the source of truth, a lens marketplace, and a universal work surface. Own your context, then own the surface."
+>
+  <PageHeader
+    eyebrow="Vision"
+    title="Own your context. Then own the surface."
+    subhead="Sable ships today as two lenses over your apps. Here is where it goes next — the moat is owned meaning that compounds."
+  />
+
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8">
+      <div class="grid gap-6 sm:grid-cols-2">
+        {
+          ahead.map((a) => (
+            <div class="rounded-[var(--radius-card)] border border-border bg-surface p-7 shadow-[var(--shadow-card)]">
+              <h3 class="text-lg font-semibold text-ink">{a.title}</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-ink-2">{a.body}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- V3 aspirational surface — clearly labeled as vision, never V1 -->
+      <figure class="mt-14 overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface shadow-[var(--shadow-lift)]">
+        <div class="flex items-center justify-between gap-3 border-b border-border px-5 py-3">
+          <span class="text-sm font-medium text-ink-2">The universal work surface</span>
+          <span class="rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary">
+            V3 vision — not yet shipping
+          </span>
+        </div>
+        <img
+          src={href('/assets/UI_Work_Surface_V3_VISION.jpeg')}
+          alt="Concept mockup of Sable's future universal work surface, showing a unified view across a person's life areas. This is an aspirational V3 vision, not the shipping product."
+          class="w-full"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="px-5 py-3 text-sm text-muted">
+          A concept of where Sable is going. Today’s product ships as two lenses over your existing apps.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <FinalCta />
+</Base>

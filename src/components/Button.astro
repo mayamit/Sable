@@ -1,0 +1,29 @@
+---
+import { href as buildHref } from '../lib/url';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  /** Set true for external/absolute links (skips base-path prefixing). */
+  external?: boolean;
+  class?: string;
+}
+
+const { href, variant = 'primary', external = false, class: klass = '' } = Astro.props;
+const url = external ? href : buildHref(href);
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-[var(--radius-btn)] px-5 py-3 text-[15px] font-semibold transition-all duration-200 focus-visible:outline-2';
+
+const variants = {
+  primary:
+    'bg-primary text-white shadow-[var(--shadow-card)] hover:bg-primary-700 hover:-translate-y-0.5',
+  secondary:
+    'bg-surface text-ink border border-border hover:border-primary hover:text-primary',
+  ghost: 'text-ink-2 hover:text-primary',
+};
+---
+
+<a href={url} class={`${base} ${variants[variant]} ${klass}`}>
+  <slot />
+</a>

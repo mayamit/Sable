@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   Sable design tokens — from CLAUDE.md / brief §3.
+   Light, calm, premium. Single source of truth for the palette.
+   ============================================================ */
+@theme {
+  /* Surfaces & ink */
+  --color-bg: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-ink: #1b1f2a;
+  --color-ink-2: #454b57;
+  --color-muted: #6b7280;
+  --color-border: #e7e9ee;
+
+  /* Sable indigo */
+  --color-primary: #5b4ef0;
+  --color-primary-700: #4a3ed6;
+  --color-primary-50: #eceafe;
+
+  /* Life-area accents */
+  --color-c-blue: #3b82f6;
+  --color-c-green: #10b981;
+  --color-c-teal: #14b8a6;
+  --color-c-amber: #f59e0b;
+  --color-c-violet: #8b5cf6;
+  --color-c-rose: #f43f5e;
+
+  /* Type */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+
+  /* Shape */
+  --radius-card: 14px;
+  --radius-btn: 10px;
+
+  /* Soft, low shadows */
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.06),
+    0 8px 24px rgba(16, 24, 40, 0.05);
+  --shadow-lift: 0 2px 4px rgba(16, 24, 40, 0.06),
+    0 16px 40px rgba(16, 24, 40, 0.08);
+}
+
+/* Gradient token (used by Navigator / CTA accents) */
+:root {
+  --grad: linear-gradient(135deg, #6a5cf6, #8b7cf8);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink-2);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings: tight tracking, confident */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Visible, on-brand focus for keyboard users (a11y) */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-link: hidden until focused */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 0 0 var(--radius-btn) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Plain-English legal / long-form prose */
+.prose-legal {
+  color: var(--color-ink-2);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.prose-legal h2 {
+  font-size: 1.4rem;
+  margin-top: 2.2rem;
+  margin-bottom: 0.6rem;
+}
+.prose-legal h3 {
+  font-size: 1.1rem;
+  margin-top: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+.prose-legal p,
+.prose-legal ul {
+  margin-bottom: 1rem;
+}
+.prose-legal ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.prose-legal a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.prose-legal strong {
+  color: var(--color-ink);
+}
+
+/* Subtle rise-on-scroll, motion-safe only */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes rise-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

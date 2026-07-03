@@ -1,0 +1,43 @@
+---
+import SectionShell from '../SectionShell.astro';
+import SectionHeading from '../SectionHeading.astro';
+import Button from '../Button.astro';
+import { howItWorks } from '../../data/home';
+import { accent, type Accent } from '../../lib/accents';
+---
+
+<SectionShell class="bg-surface border-y border-border">
+  <SectionHeading
+    eyebrow="How it works"
+    title={howItWorks.headline}
+    subhead={howItWorks.subhead}
+    center
+  />
+
+  <div class="relative mt-14 grid gap-6 md:grid-cols-3">
+    <!-- connective line on desktop -->
+    <div
+      class="pointer-events-none absolute left-[16%] right-[16%] top-9 hidden h-px bg-gradient-to-r from-c-blue/40 via-c-violet/40 to-c-teal/40 md:block"
+      aria-hidden="true"
+    ></div>
+
+    {
+      howItWorks.steps.map((step) => {
+        const a = accent[step.accent as Accent];
+        return (
+          <div class="relative rounded-[var(--radius-card)] border border-border bg-bg p-6">
+            <div class={`flex h-12 w-12 items-center justify-center rounded-full ${a.softBg} text-lg font-bold ${a.text}`}>
+              {step.n.replace('0', '')}
+            </div>
+            <h3 class="mt-5 text-xl font-semibold text-ink">{step.title}</h3>
+            <p class="mt-2 text-[15px] leading-relaxed text-ink-2">{step.body}</p>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <div class="mt-10 text-center">
+    <Button href={howItWorks.cta.href} variant="secondary">{howItWorks.cta.label}</Button>
+  </div>
+</SectionShell>

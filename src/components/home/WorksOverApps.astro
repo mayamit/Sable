@@ -1,0 +1,25 @@
+---
+import SectionShell from '../SectionShell.astro';
+import SectionHeading from '../SectionHeading.astro';
+import { worksOverApps } from '../../data/home';
+---
+
+<SectionShell tight class="bg-surface border-y border-border">
+  <div class="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
+    <SectionHeading
+      eyebrow="Works over your apps"
+      title={worksOverApps.headline}
+      subhead={worksOverApps.subhead}
+    />
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {
+        worksOverApps.connectors.map((c) => (
+          <div class="flex items-center gap-2.5 rounded-[var(--radius-btn)] border border-border bg-bg px-4 py-3">
+            <span class="h-2 w-2 rounded-full" style="background:var(--grad)" />
+            <span class="text-[15px] font-medium text-ink">{c}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</SectionShell>

@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import Trust from '../components/home/Trust.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+---
+
+<Base
+  title="How it works"
+  path="/how-it-works"
+  description="Navigator, Foundation, and lenses — how Sable resolves what your world means once, holds it privately, and reuses it everywhere."
+>
+  <PageHeader
+    eyebrow="How it works"
+    title="Resolve once. Reuse everywhere."
+    subhead="Sable is built from three parts working together: Navigator takes your intent, the Foundation holds resolved meaning, and lenses put it to work — always with your approval."
+  />
+  <HowItWorks />
+  <Trust />
+  <FinalCta />
+</Base>

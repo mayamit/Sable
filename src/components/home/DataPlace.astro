@@ -1,0 +1,46 @@
+---
+import SectionShell from '../SectionShell.astro';
+import SectionHeading from '../SectionHeading.astro';
+import Button from '../Button.astro';
+import { dataPlace } from '../../data/home';
+import { accent, type Accent } from '../../lib/accents';
+---
+
+<SectionShell class="bg-surface border-y border-border">
+  <SectionHeading eyebrow="Your data, your place" title={dataPlace.headline} subhead={dataPlace.subhead} center />
+
+  <div class="mt-12 grid gap-6 lg:grid-cols-2">
+    {
+      dataPlace.tiers.map((tier) => {
+        const a = accent[tier.accent as Accent];
+        return (
+          <div class={`rounded-[var(--radius-card)] border ${a.border} bg-bg p-7`}>
+            <div class="flex items-center gap-3">
+              <span class={`flex h-9 w-9 items-center justify-center rounded-[10px] ${a.softBg} ${a.text}`}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M3 10.5L12 4l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1v-9.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold text-ink">{tier.name}</h3>
+            </div>
+            <p class="mt-4 text-[15px] leading-relaxed text-ink-2">{tier.body}</p>
+            <ul class="mt-5 space-y-2.5">
+              {tier.points.map((p) => (
+                <li class="flex items-center gap-2.5 text-[15px] text-ink">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class={a.text}/>
+                  </svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <div class="mt-10 text-center">
+    <Button href={dataPlace.cta.href} variant="secondary">{dataPlace.cta.label}</Button>
+  </div>
+</SectionShell>

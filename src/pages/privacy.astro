@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Trust from '../components/home/Trust.astro';
+import DataPlace from '../components/home/DataPlace.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+---
+
+<Base
+  title="Privacy & Trust"
+  path="/privacy"
+  description="Your data was protected before a single line was written. Human-gated writes, source traces, full audit, and export or delete anytime."
+>
+  <PageHeader
+    eyebrow="Privacy & Trust"
+    title="Your data was protected before a single line was written."
+    subhead="Sable is designed so that knowing you never means losing control. Here is exactly what it can see, what it can do, and what stays yours."
+  />
+  <Trust />
+  <DataPlace />
+  <FinalCta />
+</Base>

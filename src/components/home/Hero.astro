@@ -1,0 +1,84 @@
+---
+import { hero } from '../../data/home';
+import Button from '../Button.astro';
+---
+
+<section class="relative overflow-hidden">
+  <!-- Soft brand wash -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-10"
+    style="background:
+      radial-gradient(60rem 40rem at 78% -10%, rgba(139,124,248,0.16), transparent 60%),
+      radial-gradient(50rem 34rem at 0% 8%, rgba(91,78,240,0.10), transparent 55%);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+    <div class="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+      <!-- Copy -->
+      <div class="rise">
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-sm font-medium text-ink-2">
+          <span class="h-2 w-2 rounded-full" style="background:var(--grad)"></span>
+          {hero.eyebrow}
+        </p>
+        <h1 class="text-[2.6rem] font-bold leading-[1.05] sm:text-6xl">
+          {hero.headline}
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-ink-2 sm:text-xl">
+          {hero.subhead}
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <Button href={hero.primary.href} variant="primary">{hero.primary.label}</Button>
+          <Button href={hero.secondary.href} variant="secondary">{hero.secondary.label}</Button>
+        </div>
+        <p class="mt-5 flex items-center gap-2 text-sm text-muted">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5l7-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          {hero.microcopy}
+        </p>
+      </div>
+
+      <!-- V1-honest product mock: Reasoning lens answering with a source trace -->
+      <div class="rise" style="animation-delay:120ms">
+        <div class="rounded-[var(--radius-card)] border border-border bg-surface p-5 shadow-[var(--shadow-lift)]">
+          <div class="flex items-center gap-2 border-b border-border pb-3">
+            <span class="h-2.5 w-2.5 rounded-full bg-c-rose/70"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-c-amber/70"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-c-green/70"></span>
+            <span class="ml-2 text-xs font-medium text-muted">Sable · Reasoning</span>
+          </div>
+
+          <div class="space-y-4 pt-4">
+            <!-- User question -->
+            <div class="ml-auto max-w-[80%] rounded-[var(--radius-btn)] rounded-br-sm bg-primary-50 px-4 py-2.5 text-[15px] text-ink">
+              What do I owe Jane, and when is it due?
+            </div>
+
+            <!-- Sable answer -->
+            <div class="max-w-[92%] rounded-[var(--radius-btn)] rounded-bl-sm border border-border bg-bg px-4 py-3">
+              <p class="text-[15px] text-ink">
+                You owe <span class="font-semibold">Jane $480</span> for the shared venue deposit,
+                due <span class="font-semibold">Fri, Jul 11</span>.
+              </p>
+              <!-- Source trace -->
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-c-blue/30 bg-c-blue/10 px-2.5 py-1 text-xs font-medium text-c-blue">
+                  <span class="h-1.5 w-1.5 rounded-full bg-c-blue"></span> Email · Jun 24
+                </span>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-c-teal/30 bg-c-teal/10 px-2.5 py-1 text-xs font-medium text-c-teal">
+                  <span class="h-1.5 w-1.5 rounded-full bg-c-teal"></span> Calendar · Deposit
+                </span>
+              </div>
+            </div>
+
+            <p class="pl-1 text-xs text-muted">
+              Every answer shows where it came from.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
