@@ -31,7 +31,14 @@ gh api --method POST "repos/$REPO/milestones" -f title="$M2" \
   -f description="Post-launch growth: individual lens pages, Security, Company/Blog, Docs, answer-engine page, use-case pages." 2>/dev/null || true
 
 # --- Helper -----------------------------------------------------------------
+# Fetch existing titles once so re-running this script never duplicates issues.
+EXISTING_TITLES="$(gh issue list --repo "$REPO" --state all --limit 500 --json title -q '.[].title' 2>/dev/null || true)"
+
 mk () { # mk "title" "labels" "milestone" "body"
+  if grep -Fxq "$1" <<< "$EXISTING_TITLES"; then
+    echo "Skip (already exists): $1"
+    return
+  fi
   echo "Creating: $1"
   gh issue create --repo "$REPO" --title "$1" --label "$2" --milestone "$3" --body "$4"
 }
