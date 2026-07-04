@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* ============================================================
-   Sable design tokens — from CLAUDE.md / brief §3.
+   PSL/i design tokens — from CLAUDE.md / brief §3.
    Light, calm, premium. Single source of truth for the palette.
    ============================================================ */
 @theme {
@@ -13,7 +13,7 @@
   --color-muted: #6b7280;
   --color-border: #e7e9ee;
 
-  /* Sable indigo */
+  /* PSL/i indigo */
   --color-primary: #5b4ef0;
   --color-primary-700: #4a3ed6;
   --color-primary-50: #eceafe;

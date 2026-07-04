@@ -1,6 +1,6 @@
-# Sable — marketing website
+# Personal Semantic Layer (PSL/i) — marketing website
 
-Marketing site for **Sable** (the product), by **PSL**.
+Marketing site for **Personal Semantic Layer (PSL/i)** (the product), by **PSL**.
 
 ## Start here
 1. `CLAUDE.md` (repo root) — the rules Claude Code must follow every session.

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create GitHub labels, milestones, and issues for building the Sable website.
+# Create GitHub labels, milestones, and issues for building the PSL/i website.
 # Prereqs:
 #   1) Install GitHub CLI: https://cli.github.com
 #   2) Authenticate:  gh auth login
@@ -68,7 +68,7 @@ mk "Layout shell: Nav, Footer, Base layout" "foundation,P1" "$M1" \
 
 **Tasks**
 - [ ] \`Base.astro\` (head/meta slot, container, skip-link).
-- [ ] \`Nav\`: logo + How it works, Lenses, Privacy, Home Server, Pricing + Log in + 'Get early access'. Sticky, light, Sable-indigo.
+- [ ] \`Nav\`: logo + How it works, Lenses, Privacy, Home Server, Pricing + Log in + 'Get early access'. Sticky, light, PSL/i-indigo.
 - [ ] \`Footer\`: four columns (Product / Company / Resources / Legal) + Social; 'Your data. Your context. Your decisions.'
 - [ ] Mobile nav.
 
@@ -164,7 +164,7 @@ mk "Page: /lenses" "page,content,P2" "$M1" \
 "Lenses overview + Communications and Reasoning, each with a V1-honest mockup and concrete example. Reserve /lenses/communications and /lenses/reasoning for Phase 2. Read brief §7."
 
 mk "Page: /privacy (Privacy & Trust)" "page,content,P1" "$M1" \
-"**Differentiator — write early.** Plain English: what Sable can/can't see; human-gated writes; the approval moment; provenance + audit; export/delete; then Home-Server as the strongest guarantee. Hero: 'Your data was protected before a single line was written.' No compliance badges until real. Read brief §7."
+"**Differentiator — write early.** Plain English: what PSL/i can/can't see; human-gated writes; the approval moment; provenance + audit; export/delete; then Home-Server as the strongest guarantee. Hero: 'Your data was protected before a single line was written.' No compliance badges until real. Read brief §7."
 
 mk "Page: /home-server" "page,content,P2" "$M1" \
 "Appliance tier: what it is, why, 'data never leaves the house,' who it's for (privacy-maximalist wedge). Light e-commerce framing; buy flow deferred. Read brief §7 + GTM wedge."
@@ -198,7 +198,7 @@ mk "Accessibility, performance & SEO pass" "quality,P2" "$M1" \
 # PHASE 2
 # ===========================================================================
 mk "Phase 2: /for-ai-assistants + llms.txt" "phase-2,P3" "$M2" \
-"Add an answer-engine page and /llms.txt so ChatGPT/Claude/Perplexity describe Sable correctly (as Lindy/Fyxer do). Read brief §5/§10."
+"Add an answer-engine page and /llms.txt so ChatGPT/Claude/Perplexity describe PSL/i correctly (as Lindy/Fyxer do). Read brief §5/§10."
 
 echo ""
 echo "Done. View: gh issue list --repo $REPO   |   https://github.com/$REPO/issues"

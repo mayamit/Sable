@@ -1,6 +1,6 @@
 ---
 name: Build task
-about: A unit of work to build the Sable website (for Claude Code or a human)
+about: A unit of work to build the PSL/i website (for Claude Code or a human)
 title: "[Build] "
 labels: []
 assignees: ''
