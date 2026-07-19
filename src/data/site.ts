@@ -16,6 +16,7 @@ export const site = {
 export const nav: { label: string; href: string }[] = [
   { label: 'How it works', href: '/how-it-works' },
   { label: 'Lenses', href: '/lenses' },
+  { label: 'Demo', href: '/demo' },
   { label: 'Privacy', href: '/privacy' },
   { label: 'Home Server', href: '/home-server' },
   { label: 'Pricing', href: '/pricing' },

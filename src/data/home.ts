@@ -8,7 +8,7 @@ export const hero = {
   subhead:
     'PSL/i resolves what your life and work mean — once — holds it privately, and reuses it across your apps. A packaged product, not a chatbot.',
   primary: { label: 'Get early access', href: '/waitlist' },
-  secondary: { label: 'See how it works', href: '/how-it-works' },
+  secondary: { label: 'See it in action', href: '/demo' },
   microcopy: 'Your data stays yours.',
 };
 

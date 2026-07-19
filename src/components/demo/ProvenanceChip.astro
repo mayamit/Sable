@@ -1,0 +1,25 @@
+---
+// A source-trace chip. Every displayed fact carries one — that's the trust story.
+import { accent as accentMap, type Accent } from '../../lib/accents';
+
+interface Props {
+  label: string;
+  accent?: Accent;
+  /** Subtle when true (border only, no fill) — for use on busy rows. */
+  quiet?: boolean;
+  class?: string;
+}
+const { label, accent = 'violet', quiet = false, class: klass = '' } = Astro.props;
+const a = accentMap[accent];
+---
+
+<span
+  class={`inline-flex max-w-full items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium ${
+    quiet ? 'border-border bg-surface text-muted' : `${a.border} ${a.softBg} ${a.text}`
+  } ${klass}`}
+>
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" class="shrink-0" aria-hidden="true">
+    <path d="M9 17H7A5 5 0 017 7h2M15 7h2a5 5 0 010 10h-2M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </svg>
+  <span class="truncate">{label}</span>
+</span>

@@ -1,0 +1,69 @@
+---
+// Expanded panel shown when a briefing row is opened: the original email
+// (provenance) + exactly what the Foundation resolved out of it (audit).
+import { emailById, personById, resolvedFrom, statusMeta, moneyMeta } from '../../lib/demo';
+import { accent as accentMap } from '../../lib/accents';
+
+interface Props {
+  emailId: string;
+}
+const { emailId } = Astro.props;
+const email = emailById[emailId];
+const from = email ? personById[email.from] : undefined;
+const resolved = resolvedFrom(emailId);
+const hasResolved =
+  resolved.commitments.length + resolved.money.length + resolved.documents.length > 0;
+---
+
+<div class="border-t border-border bg-bg/60 px-4 pb-4 pt-3.5 sm:px-5">
+  {/* The source email — provenance you can read */}
+  {email && (
+    <div class="overflow-hidden rounded-[10px] border border-border bg-surface">
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 border-b border-border px-3.5 py-2 text-[11.5px] text-muted">
+        <span><b class="font-semibold text-ink">From:</b> {from?.name ?? email.from}</span>
+        <span aria-hidden="true">·</span>
+        <span><b class="font-semibold text-ink">{email.date}</b></span>
+        <span class="w-full sm:w-auto"><b class="font-semibold text-ink">Subject:</b> {email.subject}</span>
+      </div>
+      <p class="whitespace-pre-line px-3.5 py-3 text-[13px] leading-relaxed text-ink-2">{email.body}</p>
+    </div>
+  )}
+
+  {/* What the semantic layer pulled out — the "resolved once" moment */}
+  {hasResolved && (
+    <div class="mt-3">
+      <p class="mb-2 flex items-center gap-1.5 text-[11.5px] font-semibold uppercase tracking-wide text-muted">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" class="text-primary" aria-hidden="true">
+          <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        </svg>
+        PSL/i resolved from this
+      </p>
+      <ul class="flex flex-col gap-1.5">
+        {resolved.commitments.map((c) => {
+          const a = accentMap[statusMeta[c.status].accent];
+          return (
+            <li class="flex items-center gap-2 text-[13px] text-ink-2">
+              <span class={`shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${a.text} ${a.softBg}`}>Commitment</span>
+              <span class="min-w-0">{c.text} <span class="text-muted">· due {c.due}</span></span>
+            </li>
+          );
+        })}
+        {resolved.money.map((m) => {
+          const a = accentMap[moneyMeta[m.direction].accent];
+          return (
+            <li class="flex items-center gap-2 text-[13px] text-ink-2">
+              <span class={`shrink-0 rounded-full px-2 py-0.5 text-[10.5px] font-semibold ${a.text} ${a.softBg}`}>{moneyMeta[m.direction].label}</span>
+              <span class="min-w-0">{m.label} <span class="font-semibold text-ink">{m.amount}</span></span>
+            </li>
+          );
+        })}
+        {resolved.documents.map((d) => (
+          <li class="flex items-center gap-2 text-[13px] text-ink-2">
+            <span class="shrink-0 rounded-full bg-primary-50 px-2 py-0.5 text-[10.5px] font-semibold text-primary-700">{d.kind}</span>
+            <span class="min-w-0">{d.title} <span class="text-muted">→ {d.resolvedInto}</span></span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
